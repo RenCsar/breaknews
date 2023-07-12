@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <p>{data.city}</p>
+      <p>{data? data.city: "Carregando..."}</p>
     </div>
   )
 }
