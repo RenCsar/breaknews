@@ -5,11 +5,12 @@ import { useSelector } from "react-redux";
 import { Container } from "./Header.styled";
 import { FiExternalLink } from 'react-icons/fi'
 import IconWeather from "../IconWeather";
+import DateGen from "../DateConversor";
 
 const Header = () => {
   useEffect(() => {
     dispatch(fetchClima());
-    // console.log(data)
+    // console.log(data.date)
   }, []);
 
   const dispatch = useDispatch<any>();
@@ -18,10 +19,12 @@ const Header = () => {
   return (
     <Container>
       <header>
-        <p>{data ? `${data.forecast[0].weekday}, ${data.date} ` : "Carregando..."}</p>
+        <p>{DateGen()}</p>
         <div className="clima-container">
-          <FiExternalLink />
-          <p>Previsão completa</p>
+          <div className="previsao-container">            
+            <FiExternalLink />
+            <p>Previsão completa</p>
+          </div>
           <div className="tempo-container">
             <IconWeather data={data} />
             <p>{data ? `${data.temp}°C` : "0°C"}</p>
