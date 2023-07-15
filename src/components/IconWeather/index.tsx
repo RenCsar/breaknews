@@ -16,7 +16,7 @@ const IconWeather = ({ data }: any) => {
         if (time >= "06" && time < "17") {
             if (clima == "clear_day") {
                 return <BsSun />
-            } else if (clima == "cloudly_day") {
+            } else if (clima == "cloudly_day" || clima == "cloud") {
                 return <BsCloudSun />
             } else if (clima == "rain") {
                 return <BsCloudRainHeavy />
@@ -27,7 +27,7 @@ const IconWeather = ({ data }: any) => {
         } else {
             if (clima == "clear_night") {
                 return <BiMoon />
-            } else if (clima == "cloudly_night") {
+            } else if (clima == "cloudly_night" || clima == "cloud") {
                 return <BsCloudMoon />
             } else if (clima == "rain") {
                 return <BsCloudRainHeavy />
