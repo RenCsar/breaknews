@@ -20,7 +20,7 @@ const HeaderStatus = () => {
   return (
     <Container>
       <div className="container-geral">
-        <p>{DateGen()}</p>
+        <p className="data">{DateGen()}</p>
         <div className="status-container">
           <div className="moeda-container">
             <CurrencyFormat data={dataClima} />

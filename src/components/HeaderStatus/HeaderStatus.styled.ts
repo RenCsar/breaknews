@@ -9,7 +9,7 @@ export const Container = styled.div`
     justify-content: space-between;
     font-size: 13px;
 
-    & :first-child {
+    & .data {
       font-weight: bold;
     }
 
@@ -18,7 +18,10 @@ export const Container = styled.div`
       gap: 10px;
 
       & .moeda-container {
-        margin-right: 50px;
+        margin-right: 20px;
+        width: 140px;
+        height: 30px;
+        user-select: none;
       }
 
       & .clima-container {
@@ -46,6 +49,6 @@ export const Container = styled.div`
     background-color: var(--preto);
     width: 100%;
     height: 13px;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 `;
