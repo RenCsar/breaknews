@@ -15,4 +15,20 @@ export const Container = styled.div`
       width: 300px;
     }
   }
+
+  @media (max-width: 500px) {
+    & .img-container {
+      & img {
+        width: 250px;
+      }
+    }
+  }
+
+  @media (max-width: 380px) {
+    & .img-container {
+      & img {
+        width: 180px;
+      }
+    }
+  }
 `;
