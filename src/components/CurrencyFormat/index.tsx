@@ -1,15 +1,14 @@
 import { Container } from "./CurrencyFormat.styled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from 'swiper';
-import finance from '../../utils/finance.json';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import Coins from "../Coins";
 
-const CurrencyFormat = (data: any) => {
-  const arr: any[] = Object.values(finance.currencies);
+const CurrencyFormat = ({ data }: any) => {
+  const arr: any[] = Object.values(data?.currencies);
   const cotacao = arr.filter((item: any) => item != "BRL");
 
   return (
