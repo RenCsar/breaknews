@@ -13,3 +13,7 @@
   --padding-geral: 0px 25px;
   --padding-mobile: 0px 8px;
 }
+
+body {
+  color: var(--preto-fonte)
+}

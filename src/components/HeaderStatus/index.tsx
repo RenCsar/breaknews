@@ -14,7 +14,7 @@ const HeaderStatus = () => {
 
   useEffect(() => {
     dispatch(fetchClima());
-    dispatch(fetchFinance())
+    dispatch(fetchFinance());
   }, []);
 
   const dataClima: any = useSelector((state: any) => state.clima.data);

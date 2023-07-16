@@ -12,7 +12,7 @@ const CurrencyFormat = ({ data }: any) => {
   const checkData = () => {
     if (data == null) {
       const cotacao = null;
-      return cotacao
+      return cotacao;
     } else {
       const arr: any[] = Object.values(data?.currencies);
       const cotacao: any = arr.filter((item: any) => item != "BRL");
