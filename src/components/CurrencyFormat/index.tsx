@@ -1,15 +1,26 @@
 import { Container } from "./CurrencyFormat.styled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from 'swiper';
+import Coins from "../Coins";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import Coins from "../Coins";
 
 const CurrencyFormat = ({ data }: any) => {
-  const arr: any[] = Object.values(data?.currencies);
-  const cotacao = arr.filter((item: any) => item != "BRL");
+
+  const checkData = () => {
+    if (data == null) {
+      const cotacao = null;
+      return cotacao
+    } else {
+      const arr: any[] = Object.values(data?.currencies);
+      const cotacao: any = arr.filter((item: any) => item != "BRL");
+      return cotacao;
+    }
+  }
+
+  const cotacao: any = checkData();
 
   return (
     <Container>
@@ -26,7 +37,7 @@ const CurrencyFormat = ({ data }: any) => {
         className="mySwiper"
         draggable={false}
       >
-        {cotacao.map((item: any, index: number) =>
+        {cotacao === null ? "Dados não encontrados" : cotacao?.map((item: any, index: number) =>
           <SwiperSlide
             draggable={false}
             key={`${item.name}${index}`}

@@ -10,14 +10,15 @@ import CurrencyFormat from "../CurrencyFormat";
 import { fetchFinance } from "../../store/reducers/financeSlice";
 
 const HeaderStatus = () => {
+  const dispatch = useDispatch<any>();
+
   useEffect(() => {
     dispatch(fetchClima());
     dispatch(fetchFinance())
   }, []);
 
-  const dispatch = useDispatch<any>();
   const dataClima: any = useSelector((state: any) => state.clima.data);
-  const dataFinance = useSelector((state: any) => state.finance.data);
+  const dataFinance = useSelector((state: any) => state.finance.data);  
 
   return (
     <Container>
