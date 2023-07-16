@@ -25,15 +25,17 @@ const HeaderStatus = () => {
           <div className="moeda-container">
             <CurrencyFormat data={dataClima} />
           </div>
-          <div className="clima-container">
-            <FiExternalLink />
-            <p>Previsão completa</p>
-          </div>
-          <div className="tempo-container">
-            <IconWeather data={dataClima} />
-            <p>{dataClima ? `${dataClima.temp}°C` : "0°C"}</p>
-            <p>|</p>
-            <p>{dataClima ? dataClima.city : "Carregando..."}</p>
+          <div className="weather">
+            <div className="clima-container">
+              <FiExternalLink />
+              <p>Previsão completa</p>
+            </div>
+            <div className="tempo-container">
+              <IconWeather data={dataClima} />
+              <p>{dataClima ? `${dataClima.temp}°C` : "0°C"}</p>
+              <p>|</p>
+              <p>{dataClima ? dataClima.city : "Carregando..."}</p>
+            </div>
           </div>
         </div>
       </div>

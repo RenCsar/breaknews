@@ -1,6 +1,7 @@
 import { Container } from "./CurrencyFormat.styled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from 'swiper';
+import finance from '../../utils/finance.json';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -8,29 +9,8 @@ import 'swiper/css/navigation';
 import Coins from "../Coins";
 
 const CurrencyFormat = (data: any) => {
-
-  const cotacao = [
-    {
-      name: "Dollar",
-      variation: -0.002
-    },
-    {
-      name: "Real",
-      variation: -0.3
-    },
-    {
-      name: "Euro",
-      variation: -0.6
-    },
-    {
-      name: "Zeng",
-      variation: 0.1
-    },
-    {
-      name: "Zero",
-      variation: 0
-    },
-  ];
+  const arr: any[] = Object.values(finance.currencies);
+  const cotacao = arr.filter((item: any) => item != "BRL");
 
   return (
     <Container>
@@ -53,7 +33,7 @@ const CurrencyFormat = (data: any) => {
             key={`${item.name}${index}`}
           >
             <div className="item">
-              <p>{item.name}</p>
+              <p>{item.name.split(" ")[0]}</p>
               <Coins valor={item.variation} />
             </div>
           </SwiperSlide>

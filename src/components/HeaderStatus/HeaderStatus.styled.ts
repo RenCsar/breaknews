@@ -24,23 +24,28 @@ export const Container = styled.div`
         user-select: none;
       }
 
-      & .clima-container {
+      & .weather {
         display: flex;
-        gap: 5px;
-        cursor: pointer;
+        gap: 15px;
 
-        > p {
-          font-weight: bold;
+        & .clima-container {
+          display: flex;
+          gap: 5px;
+          cursor: pointer;
+
+          > p {
+            font-weight: bold;
+          }
         }
-      }
 
-      & .tempo-container {
-        display: flex;
-        gap: 5px;
+        & .tempo-container {
+          display: flex;
+          gap: 5px;
 
-        & :nth-child(2),
-        & :nth-child(3) {
-          font-weight: bold;
+          & :nth-child(2),
+          & :nth-child(3) {
+            font-weight: bold;
+          }
         }
       }
     }
@@ -50,5 +55,71 @@ export const Container = styled.div`
     width: 100%;
     height: 13px;
     margin-top: 5px;
+  }
+
+  @media (max-width: 768px) {
+    & .container-geral,
+    & .status-container {
+      font-size: 12px !important;
+    }
+
+    & .status-container {
+      & .moeda-container {
+        margin-right: 0px !important;
+      }
+
+      & .weather {
+        & .clima-container {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    & .container-geral,
+    & .status-container {
+      font-size: 11px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    & .container-geral,
+    & .status-container {
+      font-size: 13px !important;
+    }
+
+    & .status-container {
+      & .moeda-container {
+        display: none;
+      }
+
+      & .weather {
+        & .clima-container {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 380px) {
+    padding: var(--padding-mobile);
+
+    & .container-geral,
+    & .status-container {
+      font-size: 12px !important;
+    }
+
+    & .status-container {
+      & .moeda-container {
+        display: none;
+      }
+
+      & .weather {
+        & .clima-container {
+          display: none !important;
+        }
+      }
+    }
   }
 `;

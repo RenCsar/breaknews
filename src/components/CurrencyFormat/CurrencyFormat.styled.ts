@@ -12,4 +12,13 @@ export const Container = styled.div`
       gap: 10px;
     }
   }
+
+  @media (max-width: 500px) {
+    & .mySwiper {
+      width: 100px;
+      & .item {
+        gap: 5px;
+      }
+    }
+  }
 `;
