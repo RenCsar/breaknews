@@ -1,12 +1,13 @@
 import Banner from "../../components/Banner";
 import HeaderStatus from "../../components/HeaderStatus";
+import { Container } from "./Home.Styled";
 
 const Home = () => {
   return (
-    <div>
+    <Container>
       <HeaderStatus />
       <Banner />
-    </div>
+    </Container>
   )
 }
 
