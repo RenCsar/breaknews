@@ -26,11 +26,12 @@ export const Container = styled.div`
         display: flex;
         justify-content: space-around;
 
-        & a.pending, & a {
+        & a.pending,
+        & a {
           text-decoration: none;
           color: var(--preto-fonte);
         }
-        
+
         & .active {
           font-weight: bold;
           border-bottom: 2px solid var(--preto);
@@ -40,6 +41,12 @@ export const Container = styled.div`
           list-style: none;
         }
       }
+    }
+  }
+
+  @media (max-width: 700px) {
+    & .container-geral {
+      padding: 0px 0px;
     }
   }
 `;

@@ -23,10 +23,15 @@ export default function AccountMenu() {
   };
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center'}}>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Configurações">
-          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
-            <Typography sx={{color: 'rgba(0, 0, 0, 0.5)'}}>
+          <Box sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            '.css-137ul40-MuiButtonBase-root-MuiIconButton-root': { marginLeft: '3px' }
+          }}>
+            <Typography sx={{ color: 'rgba(0, 0, 0, 0.5)' }}>
               Renan Cesar
             </Typography>
             <IconButton

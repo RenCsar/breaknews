@@ -1,15 +1,33 @@
 import { NavLink } from "react-router-dom";
 import AccountMenu from "../AccountMenu";
 import { Container } from "./Nav.Styled";
+import DropDown from "../DropDown";
+import { Box } from "@mui/material";
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const Nav = () => {
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'))
+
     return (
         <Container>
             <div className="container-geral">
                 <div>
-
+                    <Box
+                        sx={{
+                            display: matches ? "none" : "block",
+                        }}
+                    >
+                        <DropDown />
+                    </Box>
                 </div>
-                <nav>
+                <Box
+                    component='nav'
+                    sx={{
+                        display: !matches ? "none" : "block",
+                    }}
+                >
                     <ul>
                         <NavLink
                             to="/News"
@@ -60,7 +78,8 @@ const Nav = () => {
                             <li>Clima</li>
                         </NavLink>
                     </ul>
-                </nav>
+                </Box>
+
                 <div>
                     <AccountMenu />
                 </div>
