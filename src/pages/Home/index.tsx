@@ -1,5 +1,6 @@
 import Banner from "../../components/Banner";
 import HeaderStatus from "../../components/HeaderStatus";
+import Nav from "../../components/Nav";
 import { Container } from "./Home.Styled";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <Container>
       <HeaderStatus />
       <Banner />
+      <Nav />
     </Container>
   )
 }
