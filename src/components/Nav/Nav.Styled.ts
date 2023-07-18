@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const borderStyle = `
-    1px solid rgba(0, 0, 0, 0.5)
+    1px solid var(--border-color)
 `;
 
 export const Container = styled.div`

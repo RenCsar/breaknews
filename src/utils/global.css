@@ -12,6 +12,8 @@
 
   --padding-geral: 0px 25px;
   --padding-mobile: 0px 8px;
+  
+  --border-color: rgba(0, 0, 0, 0.5);
 }
 
 body {
