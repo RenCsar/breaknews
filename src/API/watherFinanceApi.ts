@@ -1,5 +1,5 @@
-import axio from "axios";
+import axios from "axios";
 
-export const API = axio.create({
+export const API = axios.create({
     baseURL: `https://api.hgbrasil.com/`
 });
