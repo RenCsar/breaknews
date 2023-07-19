@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchClima } from "../../store/reducers/climaSlice";
-import { useSelector } from "react-redux";
 import { Container } from "./HeaderStatus.styled";
 import { FiExternalLink } from 'react-icons/fi'
 import IconWeather from "../IconWeather";

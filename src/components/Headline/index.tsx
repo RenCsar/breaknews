@@ -3,8 +3,20 @@ import post from '../../utils/post.json';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Like from '../Like';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchTopNews } from '../../store/reducers/topNewsSlice';
 
 const Headline = () => {
+    const dispatch = useDispatch<any>();
+
+    useEffect(()=>{
+        dispatch(fetchTopNews());
+    }, []);
+
+    const topNews = useSelector((state: any) => state.topNews.data);
+    console.log(topNews);
+
     return (
         <Container>
             <div className='headline-container'>
@@ -22,7 +34,7 @@ const Headline = () => {
                         }}
                     >
                         <div className='text-container'>
-                            <h1>{post.title}</h1>
+                            <h1>{topNews.title}</h1>
                             <p>{post.subtitle}</p>
                         </div>
                     </Box>
@@ -30,7 +42,7 @@ const Headline = () => {
             </div>
             <div className='status-container'>
                 <div className='like-container'>
-                    <Like likes={post.likes} />
+                    <Like likes={topNews.likes} />
                 </div>
                 <div className='tags-container'>
                     {

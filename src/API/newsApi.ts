@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const API = axios.create({
-    baseURL: ``
+    baseURL: `https://api-breaknews.vercel.app`
 });
