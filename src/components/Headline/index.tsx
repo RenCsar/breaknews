@@ -1,11 +1,10 @@
 import { Container } from './Headline.Styled';
 import post from '../../utils/post.json';
-import { Box, Tooltip } from '@mui/material';
+import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { BiLike } from 'react-icons/bi';
+import Like from '../Like';
 
 const Headline = () => {
-    const userLikes = post.likes.map((users) => users.userName);
     return (
         <Container>
             <div className='headline-container'>
@@ -31,13 +30,7 @@ const Headline = () => {
             </div>
             <div className='status-container'>
                 <div className='like-container'>
-                    <BiLike size={20} />
-                    <Tooltip title={userLikes.join(", ")}>
-                        <div className='likes'>
-                            <p>{post.likes.length}</p>
-                            <p>{userLikes.join(", ")}</p>
-                        </div>
-                    </Tooltip>
+                    <Like likes={post.likes} />
                 </div>
                 <div className='tags-container'>
                     {

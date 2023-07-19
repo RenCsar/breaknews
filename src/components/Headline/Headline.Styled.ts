@@ -60,17 +60,6 @@ export const Container = styled.div`
       align-items: flex-end;
       gap: 10px;
       cursor: pointer;
-
-      & .likes {
-        display: flex;
-        align-items: flex-end;
-        gap: 10px;
-
-        & :nth-child(2) {
-          font-size: 12px;
-          color: rgba(0, 0, 0, 0.6);
-        }
-      }
     }
 
     & .tags-container {
