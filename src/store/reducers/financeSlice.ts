@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API } from "../../API/financeApi";
+import { API } from "../../API/watherFinanceApi";
 
 const key = process.env.REACT_APP_WEATHER_KEY;
 
 export const fetchFinance = createAsyncThunk('finance/fetchFinance', async () => {
-    const response = await API.get(`&key=${key}`);
+    const response = await API.get(`/finance?format=json-cors&key=${key}`);
     return response.data.results;
 });
 
