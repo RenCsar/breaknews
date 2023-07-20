@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchClima } from "../../store/reducers/climaSlice";
 import { Container } from "./HeaderStatus.styled";
 import { FiExternalLink } from 'react-icons/fi'
@@ -7,17 +7,17 @@ import IconWeather from "../IconWeather";
 import DateGen from "../DateConversor";
 import CurrencyFormat from "../CurrencyFormat";
 import { fetchFinance } from "../../store/reducers/financeSlice";
+import { Store, RootState } from "../../store/store";
 
 const HeaderStatus = () => {
-  const dispatch = useDispatch<any>();
 
   useEffect(() => {
-    dispatch(fetchClima());
-    dispatch(fetchFinance());
+    Store.dispatch(fetchClima());
+    Store.dispatch(fetchFinance());
   }, []);
 
-  const dataClima: any = useSelector((state: any) => state.clima.data);
-  const dataFinance = useSelector((state: any) => state.finance.data);  
+  const dataClima = useSelector((state: RootState) => state.clima.data);
+  const dataFinance = useSelector((state: RootState) => state.finance.data);
 
   return (
     <Container>

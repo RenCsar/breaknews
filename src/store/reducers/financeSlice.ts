@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API } from "../../API/watherFinanceApi";
-import { CurrencyData } from "../../utils/types";
+import { CurrencyData, financeState } from "../../utils/types";
 
 const key = process.env.REACT_APP_WEATHER_KEY;
 
@@ -9,11 +9,7 @@ export const fetchFinance = createAsyncThunk<CurrencyData, void>('finance/fetchF
     return response.data.results;
 });
 
-const initialState: {
-    data: CurrencyData | null;
-    loading: boolean;
-    error: string | undefined;
-} = {
+const initialState: financeState = {
     data: null,
     loading: false,
     error: ''

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API } from '../../API/newsApi';
-import { TopNewsData } from '../../utils/types';
+import { TopNewsData, topNewsState } from '../../utils/types';
 
 export const fetchTopNews = createAsyncThunk<TopNewsData, void>('topNews/fetch', async () => {
     try {
@@ -11,11 +11,7 @@ export const fetchTopNews = createAsyncThunk<TopNewsData, void>('topNews/fetch',
     }
 });
 
-const initialState: {
-    data: TopNewsData | null;
-    loading: boolean;
-    error: string | undefined;
-} = {
+const initialState: topNewsState = {
     data: null,
     loading: false,
     error: ''

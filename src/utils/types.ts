@@ -12,42 +12,49 @@ export type TForecastData = {
 }
 
 export type TWeatherData = {
-    by: string;
-    valid_key: boolean;
-    results: {
-        temp: number;
-        date: string;
-        time: string;
-        condition_code: string;
-        description: string;
-        currently: string;
-        cid: string;
-        city: string;
-        img_id: string;
-        humidity: number;
-        cloudiness: number;
-        rain: number;
-        wind_speedy: string;
-        wind_direction: number;
-        sunrise: string;
-        sunset: string;
-        condition_slug: string;
-        city_name: string;
-        forecast: TForecastData[];
-        cref: string;
-    };
-    execution_time: number;
-    from_cache: boolean;
+    temp: number;
+    date: string;
+    time: string;
+    condition_code: string;
+    description: string;
+    currently: string;
+    cid: string;
+    city: string;
+    img_id: string;
+    humidity: number;
+    cloudiness: number;
+    rain: number;
+    wind_speedy: string;
+    wind_direction: number;
+    sunrise: string;
+    sunset: string;
+    condition_slug: string;
+    city_name: string;
+    forecast: TForecastData[];
+    cref: string;
 }
 
-type Currency = {
+export type ClimaState = {
+    data: TWeatherData | null,
+    loading: boolean,
+    error: string | undefined,
+};
+
+export type TIconWeatherProps = {
+    data: TWeatherData | null;
+}
+
+//--------------------------------------
+
+
+export type Currency = {
     name: string;
     buy: number;
     sell: number | null;
     variation: number;
 }
 
-type Currencies = {
+export type Currencies = {
     [currencyCode: string]: Currency;
 }
 
@@ -101,6 +108,17 @@ export type CurrencyData = {
     taxes: Tax[];
 }
 
+export type financeState = {
+    data: CurrencyData | null;
+    loading: boolean;
+    error: string | undefined;
+}
+
+export type CurrencyFormatProps = {
+    data: CurrencyData | null;
+}
+
+//--------------------------------------
 
 export type TopNewsData = {
     id: string;
@@ -113,6 +131,19 @@ export type TopNewsData = {
     userName: string;
     img: string;
 }
+
+export type topNewsState = {
+    data: TopNewsData | null;
+    loading: boolean;
+    error: string | undefined;
+}
+
+export type TCoinsProps = {
+    valor: number;
+}
+
+//--------------------------------------
+
 
 export type TUserLike = {
     created: string;

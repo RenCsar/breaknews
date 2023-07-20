@@ -3,11 +3,12 @@ import { BiMoon } from 'react-icons/bi'
 import { BsCloudSun } from 'react-icons/bs'
 import { BsCloudMoon } from 'react-icons/bs'
 import { BsCloudRainHeavy } from 'react-icons/bs'
+import { TIconWeatherProps } from '../../utils/types'
 
-const IconWeather = ({ data }: any) => {
+const IconWeather = ({ data }: TIconWeatherProps) => {
     const checkWeather = () => {
         const time = data ? data.time?.split(":")[0] : null;
-        const clima: any = data ? data.condition_slug : null;
+        const clima = data ? data.condition_slug : null;
 
         if (time == null) {
             return "-"

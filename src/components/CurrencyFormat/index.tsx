@@ -7,20 +7,22 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const CurrencyFormat = ({ data }: any) => {
+import { CurrencyFormatProps } from "../../utils/types";
+
+const CurrencyFormat = ({ data }: CurrencyFormatProps) => {
 
   const checkData = () => {
     if (data == null) {
       const cotacao = null;
       return cotacao;
     } else {
-      const arr: any[] = Object.values(data?.currencies);
-      const cotacao: any = arr.filter((item: any) => item != "BRL");
+      const arr = Object.values(data?.currencies);
+      const cotacao = arr.filter((item) => item != "BRL");
       return cotacao;
     }
   }
 
-  const cotacao: any = checkData();
+  const cotacao = checkData();
 
   return (
     <Container>

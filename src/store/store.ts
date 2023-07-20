@@ -10,3 +10,5 @@ export const Store = configureStore({
         topNews: topNewsSlice.reducer,
     }
 });
+
+export type RootState = ReturnType<typeof Store.getState>;

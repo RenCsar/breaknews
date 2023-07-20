@@ -1,8 +1,11 @@
 import { ValueCurrency } from "./Coins.Styled";
 import { HiArrowUp } from 'react-icons/hi';
 import { HiArrowDown } from 'react-icons/hi';
+import { TCoinsProps } from "../../utils/types";
 
-const Coins = ({ valor }: any) => {
+
+const Coins = ({valor}: TCoinsProps) => {
+
     const checkArrow = () => {
         if (valor > 0) {
             return <HiArrowUp />

@@ -3,19 +3,19 @@ import post from '../../utils/post.json';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Like from '../Like';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchTopNews } from '../../store/reducers/topNewsSlice';
+import { Store, RootState } from '../../store/store';
 
 const Headline = () => {
-    const dispatch = useDispatch<any>();
 
-    useEffect(()=>{
-        dispatch(fetchTopNews());
+    useEffect(() => {
+        Store.dispatch(fetchTopNews());
     }, []);
 
-    const topNews = useSelector((state: any) => state.topNews.data);
-    
+    const topNews = useSelector((state: RootState) => state.topNews.data);
+
     if (!topNews) {
         return <div>Carregando Postagem...</div>;
     }
