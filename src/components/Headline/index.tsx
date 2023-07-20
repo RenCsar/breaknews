@@ -15,7 +15,10 @@ const Headline = () => {
     }, []);
 
     const topNews = useSelector((state: any) => state.topNews.data);
-    console.log(topNews);
+    
+    if (!topNews) {
+        return <div>Carregando Postagem...</div>;
+    }
 
     return (
         <Container>
