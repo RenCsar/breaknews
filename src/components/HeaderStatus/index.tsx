@@ -8,6 +8,8 @@ import DateGen from "../DateConversor";
 import CurrencyFormat from "../CurrencyFormat";
 import { fetchFinance } from "../../store/reducers/financeSlice";
 import { Store, RootState } from "../../store/store";
+import CircularProgress from '@mui/material/CircularProgress';
+import { Box } from "@mui/material";
 
 const HeaderStatus = () => {
 
@@ -18,6 +20,7 @@ const HeaderStatus = () => {
 
   const dataClima = useSelector((state: RootState) => state.clima.data);
   const dataFinance = useSelector((state: RootState) => state.finance.data);
+  console.log(dataClima)
 
   return (
     <Container>
@@ -28,16 +31,31 @@ const HeaderStatus = () => {
             <CurrencyFormat data={dataFinance} />
           </div>
           <div className="weather">
-            <div className="clima-container">
-              <FiExternalLink />
-              <p>Previsão completa</p>
-            </div>
-            <div className="tempo-container">
-              <IconWeather data={dataClima} />
-              <p>{dataClima ? `${dataClima.temp}°C` : "0°C"}</p>
-              <p>|</p>
-              <p>{dataClima ? dataClima.city : "Carregando..."}</p>
-            </div>
+            {!dataClima ?
+              <Box
+                sx={{
+                  width: 50,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <CircularProgress color="inherit" size={13} />
+              </Box>
+              :
+              <>
+                <div className="clima-container">
+                  <FiExternalLink />
+                  <p>Previsão completa</p>
+                </div>
+                <div className="tempo-container">
+                  <IconWeather data={dataClima} />
+                  <p>{dataClima ? `${dataClima.temp}°C` : "Carregando..."}</p>
+                  <p>|</p>
+                  <p>{dataClima ? dataClima.city : "Carregando..."}</p>
+                </div>
+              </>
+            }
           </div>
         </div>
       </div>
