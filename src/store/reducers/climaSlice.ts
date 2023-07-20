@@ -1,36 +1,41 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API } from "../../API/watherFinanceApi";
+import { TWeatherData } from "../../utils/types";
 
 const key = process.env.REACT_APP_WEATHER_KEY;
 
-export const fetchClima = createAsyncThunk('clima/fetchClima', async () => {
+export const fetchClima = createAsyncThunk<TWeatherData, void>('clima/fetchClima', async () => {
     const response = await API.get(`/weather?user_ip=remote&format=json-cors&key=${key}`);
     return response.data.results;
 });
 
-const initialState = {
+const initialState: {
+    data: TWeatherData | null,
+    loading: boolean,
+    error: string | undefined,
+} = {
     data: null,
     loading: false,
     error: ''
-}
+};
 
 export const climaSlice = createSlice({
     name: 'clima',
     initialState: initialState,
-    reducers:{},
+    reducers: {},
     extraReducers: (builder) => {
         builder
-        .addCase(fetchClima.pending, (state) => {
-            state.loading = true;
-            state.error = '';
-        })
-        .addCase(fetchClima.fulfilled, (state: any, action) => {
-            state.loading = false;
-            state.data = action.payload;
-        })
-        .addCase(fetchClima.rejected, (state: any, action) => {
-            state.loading = false;
-            state.error = action.error.message;
-        })
+            .addCase(fetchClima.pending, (state) => {
+                state.loading = true;
+                state.error = '';
+            })
+            .addCase(fetchClima.fulfilled, (state, action) => {
+                state.loading = false;
+                state.data = action.payload;
+            })
+            .addCase(fetchClima.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
     }
 });

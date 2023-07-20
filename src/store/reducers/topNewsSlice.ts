@@ -1,17 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API } from '../../API/newsApi';
+import { TopNewsData } from '../../utils/types';
 
-export const fetchTopNews = createAsyncThunk('topNews/fetch', async () => {
+export const fetchTopNews = createAsyncThunk<TopNewsData, void>('topNews/fetch', async () => {
     try {
         const response = await API.get('/news/top');
         return response.data.news;
     } catch (error: any) {
-        console.log(error.message);
         throw error;
     }
 });
 
-const initialState = {
+const initialState: {
+    data: TopNewsData | null;
+    loading: boolean;
+    error: string | undefined;
+} = {
     data: null,
     loading: false,
     error: ''
@@ -27,13 +31,13 @@ export const topNewsSlice = createSlice({
                 state.loading = true;
                 state.error = '';
             })
-            .addCase(fetchTopNews.fulfilled, (state: any, action) => {
+            .addCase(fetchTopNews.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(fetchTopNews.rejected, (state: any, action) => {
+            .addCase(fetchTopNews.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message
             })
     },
-})
+});

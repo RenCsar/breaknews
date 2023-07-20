@@ -1,14 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API } from "../../API/watherFinanceApi";
+import { CurrencyData } from "../../utils/types";
 
 const key = process.env.REACT_APP_WEATHER_KEY;
 
-export const fetchFinance = createAsyncThunk('finance/fetchFinance', async () => {
+export const fetchFinance = createAsyncThunk<CurrencyData, void>('finance/fetchFinance', async () => {
     const response = await API.get(`/finance?format=json-cors&key=${key}`);
     return response.data.results;
 });
 
-const initialState = {
+const initialState: {
+    data: CurrencyData | null;
+    loading: boolean;
+    error: string | undefined;
+} = {
     data: null,
     loading: false,
     error: ''
@@ -24,13 +29,13 @@ export const financeSlice = createSlice({
                 state.loading = true;
                 state.error = '';
             })
-            .addCase(fetchFinance.fulfilled, (state: any, action) => {
+            .addCase(fetchFinance.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(fetchFinance.rejected, (state: any, action) => {
+            .addCase(fetchFinance.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             })
     }
-})
+});
