@@ -120,13 +120,21 @@ export type CurrencyFormatProps = {
 
 //--------------------------------------
 
+export type TComment = {
+    idComment: string;
+    userId: string;
+    userName: string;
+    comment: string;
+    createdAt: string;
+}
+
 export type TopNewsData = {
     id: string;
     title: string;
     text: string;
     banner: string;
     likes: TUserLike[] | null;
-    comments: any;
+    comments: TComment[] | null;
     name: string;
     userName: string;
     img: string;
