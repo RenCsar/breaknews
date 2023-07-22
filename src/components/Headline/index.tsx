@@ -1,6 +1,6 @@
 import { Container } from './Headline.Styled';
 import post from '../../utils/post.json';
-import { Box } from '@mui/material';
+import { Box, Skeleton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Like from '../Like';
 import { useSelector } from 'react-redux';
@@ -16,49 +16,93 @@ const Headline = () => {
 
     const topNews = useSelector((state: RootState) => state.topNews.data);
 
-    if (!topNews) {
-        return <div>Carregando Postagem...</div>;
-    }
-
     return (
         <Container>
             <div className='headline-container'>
                 <h1>Headline news</h1>
             </div>
-            <div className='topnews-container'>
-                <Link to='/post'>
+            {topNews === null ?
+                <div>
                     <Box
-                        className='post-container'
                         sx={{
-                            background: `linear-gradient(to right, rgba(0, 0, 0, .7), rgba(0, 0, 0, .5)), url(${post.banner})`,
-                            backgroundPosition: "center",
-                            backgroundSize: "cover",
-                            backgroundRepeat: "no-repeat",
+                            mt: "30px"
                         }}
                     >
-                        <div className='text-container'>
-                            <h1>{topNews.title}</h1>
-                            <p>{post.subtitle}</p>
-                        </div>
+                        <Skeleton animation="wave" variant="rounded" width="100%" height={500} />
                     </Box>
-                </Link>
-            </div>
-            <div className='status-container'>
-                <div className='like-container'>
-                    <Like likes={topNews.likes} />
+                    <div>
+                        <Box
+                            sx={{
+                                mt: "10px",
+                                p: "0px 10px",
+                                display: "flex",
+                                alignItems: "flex-end",
+                                gap: "10px",
+                                justifyContent: "space-between",
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "flex-end",
+                                    gap: "10px",
+                                }}
+                            >
+                                <Skeleton animation="wave" variant="rounded" width="20px" height={20} />
+                                <Skeleton animation="wave" variant="rounded" width="150px" height={15} />
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "flex-end",
+                                    gap: "10px",
+                                }}
+                            >
+                                <Skeleton animation="wave" variant="rounded" width="60px" height={20} />
+                                <Skeleton animation="wave" variant="rounded" width="60px" height={20} />
+                                <Skeleton animation="wave" variant="rounded" width="60px" height={20} />
+                            </Box>
+                        </Box>
+                    </div>
                 </div>
-                <div className='tags-container'>
-                    {
-                        post.tags.map((i: string) =>
-                            <div key={i} className='item'>
-                                {i}
-                            </div>
-                        )
-                    }
+                :
+                <div>
+                    <div className='topnews-container'>
+                        <Link to='/post'>
+                            <Box
+                                className='post-container'
+                                sx={{
+                                    background: `linear-gradient(to right, rgba(0, 0, 0, .7), rgba(0, 0, 0, .5)), url(${post.banner})`,
+                                    backgroundPosition: "center",
+                                    backgroundSize: "cover",
+                                    backgroundRepeat: "no-repeat",
+                                }}
+                            >
+                                <div className='text-container'>
+                                    <h1>{topNews.title}</h1>
+                                    <p>{post.subtitle}</p>
+                                </div>
+                            </Box>
+                        </Link>
+                    </div>
+                    <div className='status-container'>
+                        <div className='like-container'>
+                            <Like likes={topNews.likes} />
+                        </div>
+                        <div className='tags-container'>
+                            {
+                                post.tags.map((i: string) =>
+                                    <div key={i} className='item'>
+                                        {i}
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
         </Container>
-    )
+    );
 }
 
 export default Headline;
