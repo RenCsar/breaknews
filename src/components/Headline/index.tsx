@@ -16,10 +16,10 @@ const Headline = () => {
     }, []);
 
     const topNews = useSelector((state: RootState) => state.topNews.data);
-
+    console.log(topNews)
     return (
-        <Container>            
-            <Title title={"Headline News"}/>            
+        <Container>
+            <Title title={"Headline News"} />
             {topNews === null ?
                 <div>
                     <Box
@@ -79,7 +79,15 @@ const Headline = () => {
                             >
                                 <div className='text-container'>
                                     <h1>{topNews.title}</h1>
-                                    <p>{post.subtitle}</p>
+                                    <p>{topNews.subtitle}</p>
+                                </div>
+                                <div className='user-container'>
+                                    <div className='user-name'>
+                                        <p>{`By ${topNews.name}`}</p>
+                                        <div className='img-container'>
+                                            <img src={topNews.img} alt="imagem do usuário" />
+                                        </div>
+                                    </div>
                                 </div>
                             </Box>
                         </Link>
@@ -90,7 +98,7 @@ const Headline = () => {
                         </div>
                         <div className='tags-container'>
                             {
-                                post.tags.map((i: string) =>
+                                topNews.category?.map((i: string) =>
                                     <div key={i} className='item'>
                                         {i}
                                     </div>

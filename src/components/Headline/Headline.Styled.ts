@@ -1,9 +1,20 @@
 import styled from "styled-components";
 
+const columnCenter = `
+display: flex;
+flex-direction: column;
+align-items: center;
+`;
+
+const flexCenter = `
+display: flex;
+align-items: center;
+`;
+
 export const Container = styled.div`
-  padding: var(--padding-geral);
   display: flex;
   flex-direction: column;
+  padding: var(--padding-geral);
   margin-top: 20px;
   width: 100%;
   margin-bottom: 20px;
@@ -15,16 +26,20 @@ export const Container = styled.div`
       text-decoration: none;
 
       & .post-container {
+        ${columnCenter}
+        justify-content: flex-end;
         width: 100%;
         height: 500px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
         color: var(--branco);
 
         & .text-container {
+          ${columnCenter}
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          margin-top: 80px;
+          gap: 10px;
+
           & h1 {
             font-size: 30px;
           }
@@ -33,13 +48,32 @@ export const Container = styled.div`
             font-size: 20px;
           }
         }
+
+        & .user-container {
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          width: 100%;
+          padding: 20px;
+
+          & .user-name {
+            ${flexCenter}
+            gap: 10px;
+          }
+
+          & .img-container {
+            & img {
+              width: 40px;
+              border-radius: 50px;
+            }
+          }
+        }
       }
     }
   }
 
   & .status-container {
-    display: flex;
-    align-items: center;
+    ${flexCenter}
     justify-content: space-between;
     width: 100%;
     height: 40px;

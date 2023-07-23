@@ -20,7 +20,6 @@ const HeaderStatus = () => {
 
   const dataClima = useSelector((state: RootState) => state.clima.data);
   const dataFinance = useSelector((state: RootState) => state.finance.data);
-  console.log(dataClima)
 
   return (
     <Container>
