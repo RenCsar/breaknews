@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchTopNews } from '../../store/reducers/topNewsSlice';
 import { Store, RootState } from '../../store/store';
+import Title from '../Titles';
 
 const Headline = () => {
 
@@ -17,10 +18,8 @@ const Headline = () => {
     const topNews = useSelector((state: RootState) => state.topNews.data);
 
     return (
-        <Container>
-            <div className='headline-container'>
-                <h1>Headline news</h1>
-            </div>
+        <Container>            
+            <Title title={"Headline News"}/>            
             {topNews === null ?
                 <div>
                     <Box
