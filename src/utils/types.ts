@@ -131,7 +131,9 @@ export type TComment = {
 export type TopNewsData = {
     id: string;
     title: string;
+    subtitle: string;
     text: string;
+    category: string[] | null;
     banner: string;
     likes: TUserLike[] | null;
     comments: TComment[] | null;
