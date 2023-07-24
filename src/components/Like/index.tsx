@@ -3,7 +3,7 @@ import { Tooltip } from '@mui/material';
 import { Container } from './Like.Styled';
 import { TUserLike, TlikeProps } from '../../utils/types';
 
-const Like = ({ likes }: TlikeProps) => {
+const Like = ({ likes, small }: TlikeProps) => {
 
     if (!likes) {
         return <div>Carregando curtidas...</div>;
@@ -11,8 +11,10 @@ const Like = ({ likes }: TlikeProps) => {
 
     const userLikes = likes.map((users: TUserLike) => users?.userName);
 
-    const showLikes = (userLikes: string[]) => {
-        if (userLikes.length == 0) {
+    const showLikes = (userLikes: string[], small: boolean | undefined) => {
+        if (small == true) {
+            return `${likes.length} likes`;
+        } else if (userLikes.length == 0) {
             return '';
         } else if (userLikes.length == 1) {
             return `${userLikes[0]} curtiu!`;
@@ -28,7 +30,7 @@ const Like = ({ likes }: TlikeProps) => {
             <BiLike size={20} />
             <Tooltip title={userLikes.join(", ")}>
                 <div className="likes">
-                    <p>{showLikes(userLikes)}</p>
+                    <p>{showLikes(userLikes, small)}</p>
                 </div>
             </Tooltip>
         </Container>
