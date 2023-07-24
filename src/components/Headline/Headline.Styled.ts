@@ -6,11 +6,6 @@ flex-direction: column;
 align-items: center;
 `;
 
-const flexCenter = `
-display: flex;
-align-items: center;
-`;
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,25 +50,14 @@ export const Container = styled.div`
           justify-content: flex-end;
           width: 100%;
           padding: 20px;
-
-          & .user-name {
-            ${flexCenter}
-            gap: 10px;
-          }
-
-          & .img-container {
-            & img {
-              width: 40px;
-              border-radius: 50px;
-            }
-          }
         }
       }
     }
   }
 
   & .status-container {
-    ${flexCenter}
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 40px;

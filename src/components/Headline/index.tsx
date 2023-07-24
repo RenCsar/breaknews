@@ -9,6 +9,7 @@ import { fetchTopNews } from '../../store/reducers/topNewsSlice';
 import { Store, RootState } from '../../store/store';
 import Title from '../Titles';
 import Category from '../Category';
+import UserPost from '../UserPost';
 
 const Headline = () => {
 
@@ -83,12 +84,7 @@ const Headline = () => {
                                     <p>{topNews.subtitle}</p>
                                 </div>
                                 <div className='user-container'>
-                                    <div className='user-name'>
-                                        <p>{`By ${topNews.name}`}</p>
-                                        <div className='img-container'>
-                                            <img src={topNews.img} alt="imagem do usuário" />
-                                        </div>
-                                    </div>
+                                    <UserPost post={topNews} />
                                 </div>
                             </Box>
                         </Link>
