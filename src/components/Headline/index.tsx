@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { fetchTopNews } from '../../store/reducers/topNewsSlice';
 import { Store, RootState } from '../../store/store';
 import Title from '../Titles';
+import Category from '../Category';
 
 const Headline = () => {
 
@@ -16,7 +17,7 @@ const Headline = () => {
     }, []);
 
     const topNews = useSelector((state: RootState) => state.topNews.data);
-    console.log(topNews)
+
     return (
         <Container>
             <Title title={"Headline News"} />
@@ -96,14 +97,8 @@ const Headline = () => {
                         <div className='like-container'>
                             <Like likes={topNews.likes} />
                         </div>
-                        <div className='tags-container'>
-                            {
-                                topNews.category?.map((i: string) =>
-                                    <div key={i} className='item'>
-                                        {i}
-                                    </div>
-                                )
-                            }
+                        <div>
+                            <Category post={topNews} />
                         </div>
                     </div>
                 </div>

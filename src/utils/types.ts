@@ -164,3 +164,7 @@ export type TUserLike = {
 export type TlikeProps = {
     likes: TUserLike[] | null;
 }
+
+export type TCategoryProps = {
+    post: TopNewsData,
+}
