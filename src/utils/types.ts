@@ -165,6 +165,6 @@ export type TlikeProps = {
     likes: TUserLike[] | null;
 }
 
-export type TCategoryProps = {
+export type TPostProps = {
     post: TopNewsData,
 }

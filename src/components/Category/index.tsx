@@ -1,7 +1,7 @@
-import { TCategoryProps } from '../../utils/types'
+import { TPostProps } from '../../utils/types'
 import { Container } from './Category.Styled'
 
-const Category = ({ post }: TCategoryProps) => {
+const Category = ({ post }: TPostProps) => {
     return (
         <Container>
             <div className='tags-container'>

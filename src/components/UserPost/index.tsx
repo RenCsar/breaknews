@@ -1,6 +1,7 @@
 import { Container } from "./UserPost.Styled";
+import { TPostProps } from '../../utils/types';
 
-const UserPost = ({ post }: any) => {
+const UserPost = ({ post }: TPostProps) => {
     return (
         <Container>
                 <div className='user-name'>
