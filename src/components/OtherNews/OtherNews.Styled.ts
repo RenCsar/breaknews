@@ -5,6 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
+  gap: 20px;
 
   & .link-item-container {
     color: var(--preto-fonte);
@@ -12,9 +14,10 @@ export const Container = styled.div`
 
     & .card {
       width: 100%;
-      height: 150px;
+      min-height: 150px;
       display: flex;
       gap: 20px;
+      justify-content: center;
 
       & .img-container,
       & img {
@@ -39,6 +42,24 @@ export const Container = styled.div`
             justify-content: space-between;
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: 650px) {
+    gap: 40px;
+    & .card {
+      flex-direction: column;
+      align-items: center;
+
+      > .img-container,
+      & img {
+        height: 250px !important;
+        width: 100% !important;
+      }
+
+      > .content {
+        width: 100%;
       }
     }
   }
