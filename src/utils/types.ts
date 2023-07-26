@@ -165,5 +165,5 @@ export type TlikeProps = {
 };
 
 export type TPostProps = {
-  post: TopNewsData;
+  post: TopNewsData | null;
 };

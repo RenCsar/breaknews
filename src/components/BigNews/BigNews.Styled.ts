@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
   & .link-container {
     text-decoration: none;
     color: var(--preto-fonte);
