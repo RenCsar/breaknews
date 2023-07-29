@@ -5,8 +5,6 @@ import OtherNews from "../OtherNews";
 
 const HomeNews = () => {
 
-  // const Post = null;
-
   return (
     <Container>
       <div className="container-geral">
