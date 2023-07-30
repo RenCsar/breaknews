@@ -6,7 +6,14 @@ import Like from "../Like";
 import UserPost from "../UserPost";
 import { Skeleton, Box } from "@mui/material";
 
-const BigNews = ({ post }: TPostProps) => {
+const BigNews = ({ post }: any) => {
+
+    const checkPost = (post: any) => {
+        if (post !== null) {
+            const news = post[0];
+            return news;
+        }
+    }
 
     return (
         <Container>
@@ -79,26 +86,26 @@ const BigNews = ({ post }: TPostProps) => {
                     :
                     <Link to="/noticia" className="link-container">
                         <div className="img-container">
-                            <img src={post.banner} alt="foto-notícia" />
+                            <img src={checkPost(post).banner} alt="foto-notícia" />
                         </div>
                         <div className="categoria-container">
-                            <Category post={post} />
+                            <Category post={checkPost(post)} />
                         </div>
                         <div className="title-container">
                             <h1>
-                                {post.title}
+                                {checkPost(post).title}
                             </h1>
                             <h4>
-                                {post.subtitle}
+                                {checkPost(post).subtitle}
                             </h4>
                         </div>
                         <div className="status-container">
                             <div className="group">
                                 <div className="like">
-                                    <Like likes={post.likes} />
+                                    <Like likes={checkPost(post).likes} />
                                 </div>
                                 <div className="user-container">
-                                    <UserPost post={post} />
+                                    <UserPost post={checkPost(post)} />
                                 </div>
                             </div>
                         </div>

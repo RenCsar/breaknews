@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Container } from "./OtherNews.Styled";
-import { TPostProps } from "../../utils/types";
+import { TPostProps, TopNewsData } from "../../utils/types";
 import Category from "../Category";
 import Like from "../Like";
 import UserPost from "../UserPost";
 import { Box, Skeleton, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const OtherNews = ({ post }: TPostProps) => {
+const OtherNews = ({ post }: any) => {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("sm"));
@@ -18,17 +18,29 @@ const OtherNews = ({ post }: TPostProps) => {
         matches ? setSize("250px") : setSize("150px");
     }, [matches]);
 
-    const arr = [
-        post,
-        post,
-        post,
-    ];
+    const checkPost = (post: TopNewsData[]) => {
+        if (post !== null) {
+            const arr = [
+                post[1],
+                post[2],
+                post[3],
+            ];
+            return arr;
+        } else {
+            const arr = [
+                post,
+                post,
+                post,
+            ];
+            return arr;
+        }
+    };
 
     return (
         <Container>
             {
                 post === null ?
-                    arr.map((i, index) =>
+                    checkPost(post).map((i: TopNewsData, index: number) =>
                         <Link to="/noticia" className="link-item-container" key={`${index}`}>
                             <Box className="card">
                                 <div className="img-container">
@@ -90,7 +102,7 @@ const OtherNews = ({ post }: TPostProps) => {
                         </Link>
                     )
                     :
-                    arr.map((i: any) =>
+                    checkPost(post).map((i: TopNewsData) =>
                         <Link to="/noticia" className="link-item-container" key={`${i.id}`}>
                             <div className="card">
                                 <div className="img-container">
