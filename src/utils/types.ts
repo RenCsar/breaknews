@@ -147,11 +147,19 @@ export type topNewsState = {
   error: string | undefined;
 };
 
-export type TCoinsProps = {
-  valor: number;
+export type AllNewsData = TopNewsData[];
+
+export type AllNewsState = {
+  data: AllNewsData | null;
+  loading: boolean;
+  error: string | undefined;
 };
 
 //--------------------------------------
+
+export type TCoinsProps = {
+  valor: number;
+};
 
 export type TUserLike = {
   created: string;
@@ -160,10 +168,14 @@ export type TUserLike = {
 };
 
 export type TlikeProps = {
-  likes: TUserLike[] | null;
+  likes: TUserLike[] | null | undefined;
   small?: boolean | undefined;
 };
 
 export type TPostProps = {
   post: TopNewsData | null;
+};
+
+export type TAllPostProps = {
+  post: AllNewsData | null;
 };

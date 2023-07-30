@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { API } from "../../API/newsApi";
-import { TopNewsData, topNewsState } from "../../utils/types";
+import { AllNewsData, AllNewsState } from "../../utils/types";
 
-export const fetchAllNews = createAsyncThunk<TopNewsData, { limit: number, offset: number }>("AllNews", async ({ limit, offset }) => {
+export const fetchAllNews = createAsyncThunk<AllNewsData, { limit: number, offset: number }>("AllNews", async ({ limit, offset }) => {
     const response = await API.get(`/news?limit=${limit}&offset=${offset}`);
     return response.data.results;
 });
 
-const initialState: topNewsState = {
+const initialState: AllNewsState = {
     data: null,
     loading: false,
     error: '',

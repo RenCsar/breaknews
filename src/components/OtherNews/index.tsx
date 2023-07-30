@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Container } from "./OtherNews.Styled";
-import { TPostProps, TopNewsData } from "../../utils/types";
+import { TAllPostProps, TopNewsData } from "../../utils/types";
 import Category from "../Category";
 import Like from "../Like";
 import UserPost from "../UserPost";
 import { Box, Skeleton, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const OtherNews = ({ post }: any) => {
+const OtherNews = ({ post }: TAllPostProps) => {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("sm"));
@@ -18,29 +18,26 @@ const OtherNews = ({ post }: any) => {
         matches ? setSize("250px") : setSize("150px");
     }, [matches]);
 
-    const checkPost = (post: TopNewsData[]) => {
-        if (post !== null) {
+    const checkPost = (post: TopNewsData[] | null) => {
+        if (post !== null && Array.isArray(post)) {
             const arr = [
                 post[1],
                 post[2],
                 post[3],
             ];
             return arr;
-        } else {
-            const arr = [
-                post,
-                post,
-                post,
-            ];
-            return arr;
         }
+
+        return [null, null, null];
     };
+
+    const news = checkPost(post);
 
     return (
         <Container>
             {
                 post === null ?
-                    checkPost(post).map((i: TopNewsData, index: number) =>
+                    news.map((i: TopNewsData | null, index: number) =>
                         <Link to="/noticia" className="link-item-container" key={`${index}`}>
                             <Box className="card">
                                 <div className="img-container">
@@ -102,11 +99,11 @@ const OtherNews = ({ post }: any) => {
                         </Link>
                     )
                     :
-                    checkPost(post).map((i: TopNewsData) =>
-                        <Link to="/noticia" className="link-item-container" key={`${i.id}`}>
+                    news.map((i: TopNewsData | null) =>
+                        <Link to="/noticia" className="link-item-container" key={`${i?.id}`}>
                             <div className="card">
                                 <div className="img-container">
-                                    <img src={i.banner} alt="foto--notícia" />
+                                    <img src={i?.banner} alt="foto--notícia" />
                                 </div>
                                 <div className="content">
                                     <div className="category">
@@ -114,12 +111,12 @@ const OtherNews = ({ post }: any) => {
                                     </div>
                                     <div className="title">
                                         <h3>
-                                            {i.title}
+                                            {i?.title}
                                         </h3>
                                     </div>
                                     <div className="status">
                                         <div className="status-content">
-                                            <Like likes={i.likes} small={true} />
+                                            <Like likes={i?.likes} small={true} />
                                             <UserPost post={i} />
                                         </div>
                                     </div>

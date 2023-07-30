@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom";
-import { TPostProps } from "../../utils/types";
+import { TAllPostProps } from "../../utils/types";
 import { Container } from "./BigNews.Styled";
 import Category from "../Category";
 import Like from "../Like";
 import UserPost from "../UserPost";
 import { Skeleton, Box } from "@mui/material";
 
-const BigNews = ({ post }: any) => {
+const BigNews = ({ post }: TAllPostProps) => {
 
-    const checkPost = (post: any) => {
-        if (post !== null) {
+    const checkPost = (post: TAllPostProps["post"]) => {
+        if (post !== null && Array.isArray(post)) {
             const news = post[0];
             return news;
         }
+        return null;
     }
+
+    const news = checkPost(post);
 
     return (
         <Container>
@@ -86,26 +89,26 @@ const BigNews = ({ post }: any) => {
                     :
                     <Link to="/noticia" className="link-container">
                         <div className="img-container">
-                            <img src={checkPost(post).banner} alt="foto-notícia" />
+                            <img src={news?.banner} alt="foto-notícia" />
                         </div>
                         <div className="categoria-container">
-                            <Category post={checkPost(post)} />
+                            <Category post={news} />
                         </div>
                         <div className="title-container">
                             <h1>
-                                {checkPost(post).title}
+                                {news?.title}
                             </h1>
                             <h4>
-                                {checkPost(post).subtitle}
+                                {news?.subtitle}
                             </h4>
                         </div>
                         <div className="status-container">
                             <div className="group">
                                 <div className="like">
-                                    <Like likes={checkPost(post).likes} />
+                                    <Like likes={news?.likes} />
                                 </div>
                                 <div className="user-container">
-                                    <UserPost post={checkPost(post)} />
+                                    <UserPost post={news} />
                                 </div>
                             </div>
                         </div>
