@@ -10,4 +10,10 @@ export const Container = styled.div`
     font-size: 22px;
     border-bottom: 1px solid var(--border-color);
   }
+
+  @media (max-width: 350px) {
+    & .headline-container {
+      font-size: 18px;
+    }
+  }
 `;
