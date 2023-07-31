@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { RootState, Store } from "../../store/store";
 import { fetchAllNews } from "../../store/reducers/getAllSlice";
 import { useSelector } from "react-redux";
+import MoreNews from "../MoreNews";
 
 const HomeNews = () => {
 
@@ -24,11 +25,7 @@ const HomeNews = () => {
           <OtherNews post={Post} />
         </div>
       </div>
-      <div className="mais-noticiais">
-        <p>
-          Mais notíciais
-        </p>
-      </div>
+      <MoreNews />
     </Container>
   )
 }
