@@ -2,23 +2,11 @@ import { Container } from "./OtherNews.Styled";
 import { TAllPostProps, TopNewsData } from "../../utils/types";
 import { Box } from "@mui/material";
 import Card from "../Card";
+import selectNumberPosts from "../selectNumberPosts";
 
 const OtherNews = ({ post }: TAllPostProps) => {
 
-    const checkPost = (post: TopNewsData[] | null) => {
-        if (post !== null && Array.isArray(post)) {
-            const arr = [
-                post[1],
-                post[2],
-                post[3],
-            ];
-            return arr;
-        }
-
-        return [null, null, null];
-    };
-
-    const news = checkPost(post);
+    const news = selectNumberPosts(post, 1, 3);
 
     return (
         <Container>

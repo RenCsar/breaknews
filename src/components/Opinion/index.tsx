@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { RootState, Store } from "../../store/store";
 import { useSelector } from "react-redux";
 import { fetchAllNews } from "../../store/reducers/getAllSlice";
+import selectNumberPosts from "../selectNumberPosts";
 
 const Opinion = () => {
   useEffect(() => {
@@ -14,6 +15,9 @@ const Opinion = () => {
   }, []);
 
   // const Post = useSelector((state: RootState) => state.getAll.data);
+
+
+  // const news = selectNumberPosts(post, 0, 4);
 
   return (
     <Container>
