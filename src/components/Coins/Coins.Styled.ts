@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { TCoinStyledProps } from "../../utils/types";
 
-export const ValueCurrency = styled.div<any>`
+export const ValueCurrency = styled.div<TCoinStyledProps>`
   display: flex;
   color: ${(props) =>
     props.valor < 0

@@ -161,6 +161,10 @@ export type TCoinsProps = {
   valor: number;
 };
 
+export type TCoinStyledProps = {
+  valor: number;
+};
+
 export type TUserLike = {
   created: string;
   userId: string;
@@ -178,4 +182,12 @@ export type TPostProps = {
 
 export type TAllPostProps = {
   post: AllNewsData | null;
+};
+
+export type TCardProps = TPostProps & {
+  direction?: string,
+};
+
+export type TCardStyledProps = {
+  direction?: string,
 };
