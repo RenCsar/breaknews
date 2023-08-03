@@ -184,10 +184,15 @@ export type TAllPostProps = {
   post: AllNewsData | null;
 };
 
-export type TCardProps = TPostProps & {
-  direction?: string,
+interface SharedCardProps {
+  direction?: string;
+  width?: string;
+  height?: string;
+  justifycard?: string;
+  imgheight?: string;
+  imgwidth?: string;
 };
 
-export type TCardStyledProps = {
-  direction?: string,
-};
+export type TCardProps = TPostProps & SharedCardProps;
+
+export type TCardStyledProps = SharedCardProps;

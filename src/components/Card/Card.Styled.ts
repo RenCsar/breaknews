@@ -7,20 +7,22 @@ export const Container = styled.div<TCardStyledProps>`
     text-decoration: none;
 
     & .card {
-      width: 100%;
+      width: ${({ width }) => (width ? width : "100%")};
+      height: ${({ height }) => (height ? height : "")};
+      flex-direction: ${({ direction }) => (direction ? direction : "row")};
+      justify-content: ${({ justifycard }) =>
+        justifycard ? justifycard : "center"};
       min-height: 150px;
       display: flex;
       gap: 20px;
-      justify-content: center;
-      flex-direction: ${({direction})=> direction == "column"? "column" : "row"};
 
-      & .img-container,
+      > .img-container,
       & img {
-        height: 150px;
-        width: 250px;
+        height: ${({ imgheight }) => (imgheight ? imgheight : "150px")};
+        width: ${({ imgwidth }) => (imgwidth ? imgwidth : "250px")};
       }
 
-      & .content {
+      > .content {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -44,7 +46,7 @@ export const Container = styled.div<TCardStyledProps>`
 
   @media (max-width: 650px) {
     & .card {
-      flex-direction: column;
+      flex-direction: column !important;
       align-items: center;
 
       > .img-container,

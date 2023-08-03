@@ -7,7 +7,7 @@ import { Box, Skeleton, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { TCardProps } from "../../utils/types";
 
-const Card = ({ post, direction }: TCardProps) => {
+const Card = ({ post, direction, width, height, justifycard, imgheight, imgwidth }: TCardProps) => {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("sm"));
@@ -21,6 +21,11 @@ const Card = ({ post, direction }: TCardProps) => {
     return (
         <Container
             direction={direction}
+            width={width}
+            height={height}
+            justifycard={justifycard}
+            imgheight={imgheight}
+            imgwidth={imgwidth}
         >
             {post === null ?
                 <Box className="link-item-container">
