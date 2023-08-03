@@ -25,7 +25,7 @@ const OtherNews = ({ post }: TAllPostProps) => {
             {
                 news.map((i: TopNewsData | null, index: number) =>
                     <Box key={`${index}`}>
-                        <Card post={i} direction="row" />
+                        <Card post={i} />
                     </Box>
                 )
             }

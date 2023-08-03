@@ -19,7 +19,9 @@ const Card = ({ post, direction }: TCardProps) => {
     }, [matches]);
 
     return (
-        <Container direction={direction}>
+        <Container
+            direction={direction}
+        >
             {post === null ?
                 <Box className="link-item-container">
                     <Box className="card">

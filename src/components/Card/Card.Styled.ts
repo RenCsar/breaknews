@@ -12,7 +12,7 @@ export const Container = styled.div<TCardStyledProps>`
       display: flex;
       gap: 20px;
       justify-content: center;
-      flex-direction: ${(props)=> props.direction == "column"? "column" : "row"};
+      flex-direction: ${({direction})=> direction == "column"? "column" : "row"};
 
       & .img-container,
       & img {
