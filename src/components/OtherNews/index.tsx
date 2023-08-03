@@ -5,9 +5,7 @@ import Card from "../Card";
 import selectNumberPosts from "../selectNumberPosts";
 
 const OtherNews = ({ post }: TAllPostProps) => {
-
     const news = selectNumberPosts(post, 1, 3);
-
     return (
         <Container>
             {

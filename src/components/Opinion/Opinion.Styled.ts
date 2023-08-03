@@ -6,13 +6,19 @@ export const Container = styled.div`
   flex-direction: column;
   margin: 20px 0px;
   width: 100%;
-  
+
   > .container-geral {
     margin: 15px 0px;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
+  @media (max-width: 600px) {
+    > .container-geral {
+      justify-content: center;
+    }
   }
 `;
