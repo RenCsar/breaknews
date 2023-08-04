@@ -1,8 +1,11 @@
 import { Container } from "./UserPost.Styled";
 import { TPostProps } from '../../utils/types';
 import { Skeleton } from "@mui/material";
+import Capitalize from "../Capitalize";
 
 const UserPost = ({ post }: TPostProps) => {
+    const name = post === null ? "" : Capitalize(post.name, 2);
+
     return (
         <Container>
             {post === null ?
@@ -14,7 +17,7 @@ const UserPost = ({ post }: TPostProps) => {
                 </div>
                 :
                 <div className='user-name'>
-                    <p>{`By ${post.name}`}</p>
+                    <p>{`By ${name}`}</p>
                     <div className='img-container'>
                         <img src={post.img} alt="imagem do usuário" />
                     </div>
