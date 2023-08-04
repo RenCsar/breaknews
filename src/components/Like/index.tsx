@@ -2,6 +2,7 @@ import { BiLike } from 'react-icons/bi';
 import { Tooltip } from '@mui/material';
 import { Container } from './Like.Styled';
 import { TUserLike, TlikeProps } from '../../utils/types';
+import Capitalize from '../Capitalize';
 
 const Like = ({ likes, small }: TlikeProps) => {
 
@@ -9,7 +10,7 @@ const Like = ({ likes, small }: TlikeProps) => {
         return <div>Carregando curtidas...</div>;
     }
 
-    const userLikes = likes.map((users: TUserLike) => users?.userName);
+    const userLikes = likes.map((users: TUserLike) => Capitalize(users?.userName, 2));
 
     const showLikes = (userLikes: string[], small: boolean | undefined) => {
         if (small == true) {
@@ -25,12 +26,14 @@ const Like = ({ likes, small }: TlikeProps) => {
         }
     }
 
+    const likeList = showLikes(userLikes, small);
+
     return (
         <Container>
             <BiLike size={20} />
-            <Tooltip title={userLikes.join(", ")}>
+            <Tooltip title={userLikes.slice(0, 5).join(", ")}>
                 <div className="likes">
-                    <p>{showLikes(userLikes, small)}</p>
+                    <p>{likeList}</p>
                 </div>
             </Tooltip>
         </Container>
