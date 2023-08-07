@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { fetchClima } from "../../store/reducers/climaSlice";
 import { Container } from "./HeaderStatus.styled";
-import { FiExternalLink } from 'react-icons/fi'
 import IconWeather from "../IconWeather";
 import DateGen from "../DateConversor";
 import CurrencyFormat from "../CurrencyFormat";
@@ -43,10 +42,6 @@ const HeaderStatus = () => {
               </Box>
               :
               <>
-                <div className="clima-container">
-                  <FiExternalLink />
-                  <p>Previsão completa</p>
-                </div>
                 <div className="tempo-container">
                   <IconWeather data={dataClima} />
                   <p>{dataClima ? `${dataClima.temp}°C` : "Carregando..."}</p>

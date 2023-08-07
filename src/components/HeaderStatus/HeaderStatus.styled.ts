@@ -18,7 +18,7 @@ export const Container = styled.div`
       gap: 10px;
 
       & .moeda-container {
-        margin-right: 20px;
+        margin-right: 10px;
         width: 140px;
         height: 30px;
         user-select: none;
@@ -27,16 +27,6 @@ export const Container = styled.div`
       & .weather {
         display: flex;
         gap: 15px;
-
-        & .clima-container {
-          display: flex;
-          gap: 5px;
-          cursor: pointer;
-
-          > p {
-            font-weight: bold;
-          }
-        }
 
         & .tempo-container {
           display: flex;
@@ -67,23 +57,10 @@ export const Container = styled.div`
       & .moeda-container {
         margin-right: 0px !important;
       }
-
-      & .weather {
-        & .clima-container {
-          display: none !important;
-        }
-      }
     }
   }
 
-  @media (max-width: 500px) {
-    & .container-geral,
-    & .status-container {
-      font-size: 11px !important;
-    }
-  }
-
-  @media (max-width: 480px) {
+  @media (max-width: 550px) {
     & .container-geral,
     & .status-container {
       font-size: 13px !important;
@@ -93,33 +70,15 @@ export const Container = styled.div`
       & .moeda-container {
         display: none;
       }
-
-      & .weather {
-        & .clima-container {
-          display: none !important;
-        }
-      }
     }
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 450px) {
     padding: var(--padding-mobile);
 
     & .container-geral,
     & .status-container {
       font-size: 12px !important;
-    }
-
-    & .status-container {
-      & .moeda-container {
-        display: none;
-      }
-
-      & .weather {
-        & .clima-container {
-          display: none !important;
-        }
-      }
     }
   }
 `;
