@@ -2,13 +2,25 @@ import { NavLink } from "react-router-dom";
 import AccountMenu from "../AccountMenu";
 import { Container } from "./Nav.Styled";
 import DropDown from "../DropDown";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useMediaQuery, useTheme } from '@mui/material';
+import { TSectionNav } from "../../utils/types";
+import { useState } from "react";
 
 const Nav = () => {
-
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('sm'))
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+    const [user, setUser] = useState(localStorage.getItem("user"));
+
+    const sections = [
+        { name: "News", link: "/News" },
+        { name: "Opinião", link: "/Opiniao" },
+        { name: "Cultura", link: "/Cultura" },
+        { name: "Esporte", link: "/Esporte" },
+        { name: "Finanças", link: "Finanças" },
+        { name: "Clima", link: "/Clima" },
+    ];
 
     return (
         <Container>
@@ -29,59 +41,36 @@ const Nav = () => {
                     }}
                 >
                     <ul>
-                        <NavLink
-                            to="/News"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active" : ""
-                            }
-                        >
-                            <li>News</li>
-                        </NavLink>
-                        <NavLink
-                            to="/Opiniao"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active" : ""
-                            }
-                        >
-                            <li>Opinião</li>
-                        </NavLink>
-                        <NavLink
-                            to="/Cultura"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active" : ""
-                            }
-                        >
-                            <li>Cultura</li>
-                        </NavLink>
-                        <NavLink
-                            to="/Esporte"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active" : ""
-                            }
-                        >
-                            <li>Esporte</li>
-                        </NavLink>
-                        <NavLink
-                            to="/Financas"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active" : ""
-                            }
-                        >
-                            <li>Finanças</li>
-                        </NavLink>
-                        <NavLink
-                            to="/Clima"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "active" : ""
-                            }
-                        >
-                            <li>Clima</li>
-                        </NavLink>
+                        {
+                            sections.map((i: TSectionNav) =>
+                                <NavLink
+                                    to={i.link}
+                                    className={({ isActive, isPending }) =>
+                                        isPending ? "pending" : isActive ? "active" : ""
+                                    }
+                                >
+                                    <li>{i.name}</li>
+                                </NavLink>
+                            )
+                        }
                     </ul>
                 </Box>
-
                 <div>
-                    <AccountMenu />
+                    {
+                        !user ?
+                            <Typography
+                                onClick={() => localStorage.setItem("user", "Renan")}
+                                sx={{
+                                    color: "var(--vermelho)",
+                                    fontWeight: "500",
+                                    cursor: "pointer"
+                                }}
+                            >
+                                Log in
+                            </Typography>
+                            :
+                            <AccountMenu />
+                    }
                 </div>
             </div>
         </Container>

@@ -165,6 +165,11 @@ export type TCoinStyledProps = {
   valor: number;
 };
 
+export type TSectionNav = {
+  name: string,
+  link: string,
+}
+
 export type TUserLike = {
   created: string;
   userId: string;
