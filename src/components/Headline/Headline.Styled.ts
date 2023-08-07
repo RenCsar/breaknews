@@ -12,7 +12,6 @@ export const Container = styled.div`
   padding: var(--padding-geral);
   margin-top: 20px;
   width: 100%;
-  margin-bottom: 20px;
 
   & .topnews-container {
     margin-top: 30px;

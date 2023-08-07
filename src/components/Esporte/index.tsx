@@ -1,4 +1,4 @@
-import { Container } from "./HomeNews.Styled";
+import { Container } from "./Esporte.Styled";
 import BigNews from "../BigNews";
 import OtherNews from "../OtherNews";
 import { useEffect } from "react";
@@ -6,8 +6,9 @@ import { RootState, Store } from "../../store/store";
 import { fetchAllNews } from "../../store/reducers/getAllSlice";
 import { useSelector } from "react-redux";
 import MoreNews from "../MoreNews";
+import Title from "../Titles";
 
-const HomeNews = () => {
+const Esporte = () => {
 
   useEffect(() => {
     Store.dispatch(fetchAllNews({ limit: 4, offset: 0 }));
@@ -17,6 +18,7 @@ const HomeNews = () => {
 
   return (
     <Container>
+      <Title title="Esporte" />
       <div className="container-geral">
         <div className="noticia-maior">
           <BigNews post={Post} />
@@ -30,4 +32,4 @@ const HomeNews = () => {
   )
 }
 
-export default HomeNews;
+export default Esporte;

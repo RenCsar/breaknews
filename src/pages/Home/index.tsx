@@ -2,7 +2,7 @@ import Banner from "../../components/Banner";
 import Culture from "../../components/Culture";
 import HeaderStatus from "../../components/HeaderStatus";
 import Headline from "../../components/Headline";
-import HomeNews from "../../components/HomeNews";
+import Esporte from "../../components/Esporte";
 import Nav from "../../components/Nav";
 import Opinion from "../../components/Opinion";
 import { Container } from "./Home.Styled";
@@ -16,9 +16,9 @@ const Home = () => {
         <Nav />
       </div>
       <Headline />
-      <HomeNews />
       <Opinion />
       <Culture />
+      <Esporte />
     </Container>
   )
 }

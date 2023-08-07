@@ -4,7 +4,6 @@ export const Container = styled.div`
   padding: var(--padding-geral);
   display: flex;
   flex-direction: column;
-  margin: 20px 0px;
   width: 100%;
 
   > .container-geral {
