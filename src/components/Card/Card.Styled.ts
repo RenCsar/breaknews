@@ -28,6 +28,10 @@ export const Container = styled.div<TCardStyledProps>`
         gap: 20px;
         width: 100%;
 
+        & .title {
+          height: 50px;
+        }
+
         & .status {
           display: flex;
           align-items: flex-end;

@@ -1,4 +1,5 @@
 import Banner from "../../components/Banner";
+import Culture from "../../components/Culture";
 import HeaderStatus from "../../components/HeaderStatus";
 import Headline from "../../components/Headline";
 import HomeNews from "../../components/HomeNews";
@@ -17,6 +18,7 @@ const Home = () => {
       <Headline />
       <HomeNews />
       <Opinion />
+      <Culture />
     </Container>
   )
 }
