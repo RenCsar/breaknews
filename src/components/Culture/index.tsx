@@ -36,7 +36,7 @@ const Culture = () => {
           </Box>
         )}
       </div>
-      <div className="container-geral">
+      {/* <div className="container-geral">
         {news.map((i: TopNewsData | null, index: number) =>
           <Box key={`${index}`}>
             <Card
@@ -50,7 +50,7 @@ const Culture = () => {
             />
           </Box>
         )}
-      </div>
+      </div> */}
       <MoreNews />
     </Container>
   )
