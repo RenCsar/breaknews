@@ -20,6 +20,7 @@ export const Container = styled.div`
   @media (max-width: 1280px) {
     > .container-geral {
       padding: 0px 150px;
+      gap: 50px;
     }
   }
 
@@ -29,17 +30,18 @@ export const Container = styled.div`
     }
   }
 
-  @media (max-width: 880px) {
+  @media (max-width: 920px) {
     > .container-geral {
       padding: 0px 100px;
       justify-content: center;
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     > .container-geral {
       padding: 0px 0px;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
   }
 `;

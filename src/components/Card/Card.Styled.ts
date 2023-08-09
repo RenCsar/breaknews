@@ -55,7 +55,8 @@ export const Container = styled.div<TCardStyledProps>`
 
       > .img-container,
       & img {
-        height: 250px !important;
+        height: ${({ direction, imgheight }) =>
+          direction == "column" ? imgheight : "250px !important"};
         width: 100% !important;
       }
 

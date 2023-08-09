@@ -12,7 +12,7 @@ import { Box } from "@mui/material"
 
 const Culture = () => {
   useEffect(() => {
-    Store.dispatch(fetchAllNews({ limit: 4, offset: 0 }));
+    Store.dispatch(fetchAllNews({ limit: 8, offset: 0 }));
   }, []);
 
   const Post = useSelector((state: RootState) => state.getAll.data);
@@ -36,7 +36,7 @@ const Culture = () => {
           </Box>
         )}
       </div>
-      {/* <div className="container-geral">
+      <div className="container-geral">
         {news.map((i: TopNewsData | null, index: number) =>
           <Box key={`${index}`}>
             <Card
@@ -50,7 +50,7 @@ const Culture = () => {
             />
           </Box>
         )}
-      </div> */}
+      </div>
       <MoreNews />
     </Container>
   )
