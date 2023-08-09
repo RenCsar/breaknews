@@ -6,6 +6,7 @@ import Esporte from "../../components/Esporte";
 import Nav from "../../components/Nav";
 import Opinion from "../../components/Opinion";
 import { Container } from "./Home.Styled";
+import Footer from "../../components/Footer";
 
 const Home = () => {
   return (
@@ -19,6 +20,10 @@ const Home = () => {
       <Opinion />
       <Culture />
       <Esporte />
+      <div className="divisao">
+        <hr />
+      </div>
+      <Footer />
     </Container>
   )
 }

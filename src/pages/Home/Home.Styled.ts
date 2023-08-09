@@ -10,4 +10,15 @@ export const Container = styled.div`
     z-index: 99;
     background-color: var(--branco);
   }
+
+  & .divisao {
+    padding: var(--padding-geral);
+
+    & hr {
+      margin: 20px 0px;
+      height: 1px;
+      background-color: var(--border-color);
+      border: none;
+    }
+  }
 `;
