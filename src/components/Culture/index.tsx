@@ -17,7 +17,7 @@ const Culture = () => {
   const xs = useMediaQuery(theme.breakpoints.down('xs'));
 
   useEffect(() => {
-    Store.dispatch(fetchCulturaNews({section: "cultura", limit: 8, offset: 0 }));
+    Store.dispatch(fetchCulturaNews({ section: "cultura", limit: 8, offset: 0 }));
   }, []);
 
   const Post = useSelector((state: RootState) => state.cultura.data);
@@ -34,7 +34,7 @@ const Culture = () => {
               direction={"column"}
               justifycard="center"
               width={xs ? "250px" : "300px"}
-              height="300px"
+              height="370px"
               imgheight="150px"
               imgwidth="100%"
             />
