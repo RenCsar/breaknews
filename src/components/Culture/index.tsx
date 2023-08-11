@@ -8,9 +8,13 @@ import { useSelector } from "react-redux";
 import { fetchAllNews } from "../../store/reducers/getAllSlice";
 import selectNumberPosts from "../selectNumberPosts";
 import { TopNewsData } from "../../utils/types";
-import { Box } from "@mui/material"
+import { Box, useMediaQuery, useTheme } from "@mui/material"
 
 const Culture = () => {
+
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.down('xs'));
+
   useEffect(() => {
     Store.dispatch(fetchAllNews({ limit: 8, offset: 0 }));
   }, []);
@@ -28,7 +32,7 @@ const Culture = () => {
               post={i}
               direction={"column"}
               justifycard="center"
-              width="300px"
+              width={xs ? "250px" : "300px"}
               height="300px"
               imgheight="150px"
               imgwidth="100%"
@@ -36,21 +40,21 @@ const Culture = () => {
           </Box>
         )}
       </div>
-      <div className="container-geral">
+      {/* <div className="container-geral">
         {news.map((i: TopNewsData | null, index: number) =>
           <Box key={`${index}`}>
             <Card
               post={i}
               direction={"column"}
               justifycard="center"
-              width="300px"
+              width={xs ? "100%" : "300px"}
               height="300px"
               imgheight="150px"
               imgwidth="100%"
             />
           </Box>
         )}
-      </div>
+      </div> */}
       <MoreNews />
     </Container>
   )
