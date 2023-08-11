@@ -9,6 +9,7 @@ import { fetchAllNews } from "../../store/reducers/allNewsSlice";
 import selectNumberPosts from "../selectNumberPosts";
 import { TopNewsData } from "../../utils/types";
 import { Box, useMediaQuery, useTheme } from "@mui/material"
+import { fetchCulturaNews } from "../../store/reducers/culturaSlice";
 
 const Culture = () => {
 
@@ -16,11 +17,11 @@ const Culture = () => {
   const xs = useMediaQuery(theme.breakpoints.down('xs'));
 
   useEffect(() => {
-    Store.dispatch(fetchAllNews({ limit: 8, offset: 0 }));
+    Store.dispatch(fetchCulturaNews({section: "cultura", limit: 8, offset: 0 }));
   }, []);
 
-  const Post = useSelector((state: RootState) => state.getAll.data);
-  const news = selectNumberPosts(Post, 0, 4);
+  const Post = useSelector((state: RootState) => state.cultura.data);
+  const news = selectNumberPosts(Post, 0, 8);
 
   return (
     <Container>
@@ -40,21 +41,6 @@ const Culture = () => {
           </Box>
         )}
       </div>
-      {/* <div className="container-geral">
-        {news.map((i: TopNewsData | null, index: number) =>
-          <Box key={`${index}`}>
-            <Card
-              post={i}
-              direction={"column"}
-              justifycard="center"
-              width={xs ? "100%" : "300px"}
-              height="300px"
-              imgheight="150px"
-              imgwidth="100%"
-            />
-          </Box>
-        )}
-      </div> */}
       <MoreNews />
     </Container>
   )

@@ -4,6 +4,7 @@ import { financeSlice } from './reducers/financeSlice';
 import { topNewsSlice } from './reducers/topNewsSlice';
 import { getAllSlice } from './reducers/allNewsSlice';
 import { opiniaoSlice } from './reducers/opiniaoSlice';
+import { culturaSlice } from './reducers/culturaSlice';
 
 export const Store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ export const Store = configureStore({
         topNews: topNewsSlice.reducer,
         getAll: getAllSlice.reducer,
         opiniao: opiniaoSlice.reducer,
+        cultura: culturaSlice.reducer,
     }
 });
 
