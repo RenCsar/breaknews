@@ -1,5 +1,4 @@
 import { Container } from './Headline.Styled';
-import post from '../../utils/post.json';
 import { Box, Skeleton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Like from '../Like';
@@ -73,7 +72,7 @@ const Headline = () => {
                             <Box
                                 className='post-container'
                                 sx={{
-                                    background: `linear-gradient(to right, rgba(0, 0, 0, .7), rgba(0, 0, 0, .5)), url(${post.banner})`,
+                                    background: `linear-gradient(to right, rgba(0, 0, 0, .7), rgba(0, 0, 0, .5)), url(${topNews.banner})`,
                                     backgroundPosition: "center",
                                     backgroundSize: "cover",
                                     backgroundRepeat: "no-repeat",
