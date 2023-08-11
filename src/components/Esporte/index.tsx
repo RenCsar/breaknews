@@ -3,7 +3,7 @@ import BigNews from "../BigNews";
 import OtherNews from "../OtherNews";
 import { useEffect } from "react";
 import { RootState, Store } from "../../store/store";
-import { fetchAllNews } from "../../store/reducers/getAllSlice";
+import { fetchAllNews } from "../../store/reducers/allNewsSlice";
 import { useSelector } from "react-redux";
 import MoreNews from "../MoreNews";
 import Title from "../Titles";

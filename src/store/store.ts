@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { climaSlice } from './reducers/climaSlice';
 import { financeSlice } from './reducers/financeSlice';
 import { topNewsSlice } from './reducers/topNewsSlice';
-import { getAllSlice } from './reducers/getAllSlice';
+import { getAllSlice } from './reducers/allNewsSlice';
 
 export const Store = configureStore({
     reducer: {

@@ -5,7 +5,7 @@ import { Container } from "./Opinion.Styled";
 import { useEffect } from "react";
 import { RootState, Store } from "../../store/store";
 import { useSelector } from "react-redux";
-import { fetchAllNews } from "../../store/reducers/getAllSlice";
+import { fetchAllNews } from "../../store/reducers/allNewsSlice";
 import selectNumberPosts from "../selectNumberPosts";
 import { TopNewsData } from "../../utils/types";
 import { Box } from "@mui/material"
