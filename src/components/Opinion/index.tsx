@@ -30,7 +30,7 @@ const Opinion = () => {
               justifycard="center"
               width="300px"
               height="500px"
-              imgheight="250px"
+              imgheight="220px"
               imgwidth="100%"
             />
           </Box>
