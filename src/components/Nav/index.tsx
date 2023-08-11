@@ -42,8 +42,9 @@ const Nav = () => {
                 >
                     <ul>
                         {
-                            sections.map((i: TSectionNav) =>
+                            sections.map((i: TSectionNav, index: number) =>
                                 <NavLink
+                                    key={index}
                                     to={i.link}
                                     className={({ isActive, isPending }) =>
                                         isPending ? "pending" : isActive ? "active" : ""

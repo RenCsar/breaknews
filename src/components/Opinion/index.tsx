@@ -5,17 +5,17 @@ import { Container } from "./Opinion.Styled";
 import { useEffect } from "react";
 import { RootState, Store } from "../../store/store";
 import { useSelector } from "react-redux";
-import { fetchAllNews } from "../../store/reducers/allNewsSlice";
 import selectNumberPosts from "../selectNumberPosts";
 import { TopNewsData } from "../../utils/types";
 import { Box } from "@mui/material"
+import { fetchOpiniaoNews } from "../../store/reducers/opiniaoSlice";
 
 const Opinion = () => {
   useEffect(() => {
-    Store.dispatch(fetchAllNews({ limit: 4, offset: 0 }));
+    Store.dispatch(fetchOpiniaoNews({ section: "opinião", limit: 4, offset: 0 }));
   }, []);
 
-  const Post = useSelector((state: RootState) => state.getAll.data);
+  const Post = useSelector((state: RootState) => state.opiniao.data);
   const news = selectNumberPosts(Post, 0, 4);
 
   return (
