@@ -5,6 +5,7 @@ import { topNewsSlice } from './reducers/topNewsSlice';
 import { getAllSlice } from './reducers/allNewsSlice';
 import { opiniaoSlice } from './reducers/opiniaoSlice';
 import { culturaSlice } from './reducers/culturaSlice';
+import { esporteSlice } from './reducers/esporteSlice';
 
 export const Store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const Store = configureStore({
         getAll: getAllSlice.reducer,
         opiniao: opiniaoSlice.reducer,
         cultura: culturaSlice.reducer,
+        esporte: esporteSlice.reducer,
     }
 });
 
