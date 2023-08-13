@@ -4,7 +4,6 @@ import { TCardStyledProps } from "../../utils/types";
 export const Container = styled.div<TCardStyledProps>`
   & .link-item-container {
     color: var(--preto-fonte);
-    text-decoration: none;
 
     & .card {
       width: ${({ width }) => (width ? width : "100%")};

@@ -19,3 +19,7 @@
 body {
   color: var(--preto-fonte)
 }
+
+a {
+  text-decoration: none;
+}

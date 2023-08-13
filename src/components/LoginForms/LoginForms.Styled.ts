@@ -70,7 +70,6 @@ export const Container = styled.div`
         line-height: 22px;
 
         & span {
-          text-decoration: underline;
           cursor: pointer;
         }
       }

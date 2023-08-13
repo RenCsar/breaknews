@@ -6,6 +6,7 @@ import { Box, Typography } from "@mui/material";
 import { useMediaQuery, useTheme } from '@mui/material';
 import { TSectionNav } from "../../utils/types";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
     const theme = useTheme();
@@ -59,16 +60,17 @@ const Nav = () => {
                 <div>
                     {
                         !user ?
-                            <Typography
-                                onClick={() => localStorage.setItem("user", "Renan")}
-                                sx={{
-                                    color: "var(--vermelho)",
-                                    fontWeight: "500",
-                                    cursor: "pointer"
-                                }}
-                            >
-                                Log in
-                            </Typography>
+                            <Link to={"/login"}>
+                                <Typography
+                                    sx={{
+                                        color: "var(--vermelho)",
+                                        fontWeight: "500",
+                                        cursor: "pointer"
+                                    }}
+                                >
+                                    Log in
+                                </Typography>
+                            </Link>
                             :
                             <AccountMenu />
                     }

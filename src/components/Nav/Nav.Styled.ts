@@ -28,7 +28,6 @@ export const Container = styled.div`
 
         & a.pending,
         & a {
-          text-decoration: none;
           color: var(--preto-fonte);
         }
 
