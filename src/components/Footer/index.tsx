@@ -2,10 +2,11 @@ import { Container } from "./Footer.Styled";
 import Banner from "../../assets/banner-branco.png";
 import { ImGithub } from 'react-icons/im';
 import { ImLinkedin2 } from 'react-icons/im';
+import { TFooterProps } from "../../utils/types";
 
-const Footer = () => {
+const Footer = ({ mt, display }: TFooterProps) => {
     return (
-        <Container>
+        <Container mt={mt} display={display}>
             <div className="container-geral">
                 <div className="section-a">
                     <div className="img-container">

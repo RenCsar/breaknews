@@ -23,7 +23,7 @@ const Home = () => {
       <div className="divisao">
         <hr />
       </div>
-      <Footer />
+      <Footer mt="40px"/>
     </Container>
   )
 }

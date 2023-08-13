@@ -166,9 +166,9 @@ export type TCoinStyledProps = {
 };
 
 export type TSectionNav = {
-  name: string,
-  link: string,
-}
+  name: string;
+  link: string;
+};
 
 export type TUserLike = {
   created: string;
@@ -196,8 +196,13 @@ interface SharedCardProps {
   justifycard?: string;
   imgheight?: string;
   imgwidth?: string;
-};
+}
 
 export type TCardProps = TPostProps & SharedCardProps;
 
 export type TCardStyledProps = SharedCardProps;
+
+export type TFooterProps = {
+  mt?: string;
+  display?: string;
+};

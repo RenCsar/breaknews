@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { TFooterProps } from "../../utils/types";
 
-export const Container = styled.div`
+export const Container = styled.div<TFooterProps>`
   & .container-geral {
-    margin-top: 40px;
+    margin-top: ${({ mt }) => (mt ? mt : "0px")};
     background-color: var(--preto);
     width: 100%;
     height: 100%;
@@ -10,7 +11,6 @@ export const Container = styled.div`
 
     & .section-a,
     & .section-b {
-      display: flex;
       align-items: center;
       padding: 20px 50px;
       justify-content: space-between;
@@ -18,6 +18,7 @@ export const Container = styled.div`
     }
 
     & .section-a {
+      display: flex;
       font-size: 13px;
 
       & .img-container {
@@ -42,6 +43,8 @@ export const Container = styled.div`
     }
 
     & .section-b {
+      display: ${({ display }) => (display ? display : "flex")};
+
       & :nth-child(1) {
         margin: 0 auto;
         & span {
@@ -61,6 +64,7 @@ export const Container = styled.div`
 
     & .divisao {
       padding: var(--padding-geral);
+      display: ${({ display }) => (display ? display : "block")};
 
       > hr {
         margin: 0px 0px;

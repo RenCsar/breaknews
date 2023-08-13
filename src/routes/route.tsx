@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { Store } from "../store/store";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../src/utils/theme';
+import Login from "../pages/Login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </ThemeProvider>
       </Provider>
