@@ -6,6 +6,7 @@ import { getAllSlice } from './reducers/allNewsSlice';
 import { opiniaoSlice } from './reducers/opiniaoSlice';
 import { culturaSlice } from './reducers/culturaSlice';
 import { esporteSlice } from './reducers/esporteSlice';
+import { authSlice } from './reducers/AuthSlice';
 
 export const Store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ export const Store = configureStore({
         opiniao: opiniaoSlice.reducer,
         cultura: culturaSlice.reducer,
         esporte: esporteSlice.reducer,
+        auth: authSlice.reducer,
     }
 });
 

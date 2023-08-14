@@ -41,6 +41,12 @@ export const Container = styled.div`
         }
       }
     }
+
+    & .userLogger {
+      width: 137px;
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   @media (max-width: 700px) {

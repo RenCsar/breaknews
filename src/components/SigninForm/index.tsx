@@ -3,8 +3,35 @@ import Box from '@mui/material/Box';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook } from 'react-icons/bs';
 import { Fade } from "react-awesome-reveal";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from '../../schemas/loginSchema';
+import { RootState, Store } from '../../store/store';
+import { Auth } from '../../store/reducers/AuthSlice';
+import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 const SigninForm = () => {
+    const navigate = useNavigate();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
+        resolver: yupResolver(loginSchema)
+    });
+
+    type TDataLogin = {
+        email: string,
+        password: string,
+    }
+
+    const logar = async (data: TDataLogin) => {
+        const result = await Store.dispatch(Auth(data));
+        reset();
+        if (result.payload?.redirectTo) {
+            navigate(result.payload.redirectTo);
+        }
+    }
+
+    const data = useSelector((state: RootState) => state.auth);
+
     return (
         <Fade direction="left" delay={100} duration={400} triggerOnce cascade>
             <Box className="login" >
@@ -17,10 +44,13 @@ const SigninForm = () => {
                         '& > :not(style)': { m: 1 },
                     }}
                     className="form"
+                    onSubmit={handleSubmit(logar)}
                 >
                     <TextField
                         id="email"
-                        label="E-mail"
+                        {...register('email')}
+                        error={!!errors.email}
+                        label={errors?.email?.message ? errors.email?.message : "E-mail"}
                         variant="outlined"
                         size="small"
                         sx={{
@@ -37,7 +67,9 @@ const SigninForm = () => {
                     />
                     <TextField
                         id="password"
-                        label="Senha"
+                        {...register("password")}
+                        error={!!errors.password}
+                        label={errors?.password?.message ? errors.password?.message : "Senha"}
                         variant="outlined"
                         size="small"
                         type="password"

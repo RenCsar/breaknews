@@ -7,12 +7,14 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { TSectionNav } from "../../utils/types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const Nav = () => {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
-    const [user, setUser] = useState(localStorage.getItem("user"));
+    const token = useSelector((state: RootState) => state.auth.token);
 
     const sections = [
         { name: "News", link: "/News" },
@@ -57,9 +59,9 @@ const Nav = () => {
                         }
                     </ul>
                 </Box>
-                <div>
+                <div className="userLogger">
                     {
-                        !user ?
+                        !token ?
                             <Link to={"/login"}>
                                 <Typography
                                     sx={{
