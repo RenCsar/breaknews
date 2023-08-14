@@ -1,3 +1,5 @@
+import { SlideProps } from '@mui/material/Slide';
+
 export type TForecastData = {
   date: string;
   weekday: string;
@@ -206,3 +208,5 @@ export type TFooterProps = {
   mt?: string;
   display?: string;
 };
+
+export type TransitionProps = Omit<SlideProps, 'direction'>;
