@@ -6,9 +6,8 @@ import { Fade } from "react-awesome-reveal";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../schemas/loginSchema';
-import { RootState, Store } from '../../store/store';
+import { Store } from '../../store/store';
 import { Auth } from '../../store/reducers/AuthSlice';
-import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 const SigninForm = () => {
@@ -20,17 +19,15 @@ const SigninForm = () => {
     type TDataLogin = {
         email: string,
         password: string,
-    }
+    };
 
     const logar = async (data: TDataLogin) => {
-        const result = await Store.dispatch(Auth(data));
+        const result: any = await Store.dispatch(Auth(data));
         reset();
         if (result.payload?.redirectTo) {
             navigate(result.payload.redirectTo);
         }
-    }
-
-    const data = useSelector((state: RootState) => state.auth);
+    };
 
     return (
         <Fade direction="left" delay={100} duration={400} triggerOnce cascade>
@@ -103,7 +100,7 @@ const SigninForm = () => {
                 </Box>
             </Box>
         </Fade>
-    )
+    );
 }
 
 export default SigninForm;

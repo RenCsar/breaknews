@@ -21,7 +21,8 @@ export const logout = () => (dispatch: any) => {
 
 interface AuthState {
     token: string | null;
-    message: string | unknown | any;
+    loginMessage: string | unknown | any;
+    loginLoading: boolean,
 }
 
 // interface AuthResponse {
@@ -31,7 +32,8 @@ interface AuthState {
 
 const initialState: AuthState = {
     token: null,
-    message: '',
+    loginLoading: false,
+    loginMessage: '',
 };
 
 export const authSlice = createSlice({
@@ -42,18 +44,23 @@ export const authSlice = createSlice({
             state.token = action.payload;
         },
         setMessage: (state, action) => {
-            state.message = action.payload;
+            state.loginMessage = action.payload;
         }
     },
     extraReducers: (builder) => {
         builder
+            .addCase(Auth.pending, (state) => {
+                state.loginLoading = true;
+            })
             .addCase(Auth.fulfilled, (state, action) => {
                 const { token, message } = action.payload.data;
                 state.token = token;
-                state.message = message;
+                state.loginMessage = message;
+                state.loginLoading = false;
             })
             .addCase(Auth.rejected, (state, action: any) => {
-                state.message = action.payload;
+                state.loginMessage = action.payload;
+                state.loginLoading = false;
             });
     },
 });
