@@ -9,6 +9,7 @@ import { loginSchema } from '../../schemas/loginSchema';
 import { Store } from '../../store/store';
 import { Auth } from '../../store/reducers/AuthSlice';
 import { useNavigate } from "react-router-dom";
+import { TLoginEntries } from '../../utils/types';
 
 const SigninForm = () => {
     const navigate = useNavigate();
@@ -16,16 +17,12 @@ const SigninForm = () => {
         resolver: yupResolver(loginSchema)
     });
 
-    type TDataLogin = {
-        email: string,
-        password: string,
-    };
-
-    const logar = async (data: TDataLogin) => {
-        const result: any = await Store.dispatch(Auth(data));
+    const logar = async (data: TLoginEntries) => {
+        const result = await Store.dispatch(Auth(data));
         reset();
-        if (result.payload?.redirectTo) {
-            navigate(result.payload.redirectTo);
+        if (Auth.fulfilled.match(result)) {
+            const redirectTo = result.payload.redirectTo;
+            navigate(redirectTo);
         }
     };
 

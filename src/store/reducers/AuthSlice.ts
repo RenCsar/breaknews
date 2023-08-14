@@ -1,7 +1,9 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, ThunkAction } from "@reduxjs/toolkit";
 import { API } from "../../API/newsApi";
+import { AuthState, TAuthResponse, TLoginEntries } from "../../utils/types";
+import { RootState } from "../store";
 
-export const Auth = createAsyncThunk<any, any>("login", async (login: any, { rejectWithValue }) => {
+export const Auth = createAsyncThunk<TAuthResponse, TLoginEntries>("login", async (login, { rejectWithValue }) => {
     try {
         const response = await API.post("/auth/", login);
         API.defaults.headers.common['Authorization'] = response.data.token;
@@ -12,23 +14,12 @@ export const Auth = createAsyncThunk<any, any>("login", async (login: any, { rej
     }
 });
 
-export const logout = () => (dispatch: any) => {
+export const logout = (): ThunkAction<void, RootState, unknown, any> => (dispatch: any) => {
     localStorage.removeItem('token');
     delete API.defaults.headers.common['Authorization'];
     dispatch(setToken(null));
     dispatch(setMessage(''));
 };
-
-interface AuthState {
-    token: string | null;
-    loginMessage: string | unknown | any;
-    loginLoading: boolean,
-}
-
-// interface AuthResponse {
-//     data: any;
-//     redirectTo?: string;
-// }
 
 const initialState: AuthState = {
     token: null,
@@ -58,8 +49,12 @@ export const authSlice = createSlice({
                 state.loginMessage = message;
                 state.loginLoading = false;
             })
-            .addCase(Auth.rejected, (state, action: any) => {
-                state.loginMessage = action.payload;
+            .addCase(Auth.rejected, (state, action) => {
+                if (action.payload) {
+                    state.loginMessage = action.payload as string;
+                } else {
+                    state.loginMessage = 'Ocorreu um erro inesperado!';
+                }
                 state.loginLoading = false;
             });
     },

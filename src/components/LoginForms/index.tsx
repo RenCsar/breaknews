@@ -33,7 +33,7 @@ const LoginForms = () => {
                                 <p>Ainda não tem uma conta? <span onClick={toggleVisible}>Criar conta</span></p>
                             )}
                         </div>
-                        <CustomizedSnackbars error={(loginMessage || cadastroMessage)}/>
+                        <CustomizedSnackbars error={(loginMessage || cadastroMessage)} />
                     </>
             }
         </Container>

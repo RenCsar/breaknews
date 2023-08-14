@@ -2,8 +2,8 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '../../utils/types';
+import Slide, { SlideProps } from '@mui/material/Slide';
+import { CustomizedSnackbarsProps, TransitionProps } from '../../utils/types';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -16,9 +16,9 @@ function TransitionRight(props: TransitionProps) {
     return <Slide {...props} direction="right" />;
 }
 
-export default function CustomizedSnackbars({ error }: any) {
+export default function CustomizedSnackbars({ error }: CustomizedSnackbarsProps) {
     const [open, setOpen] = React.useState(false);
-    const [transition, setTransition] = React.useState<any>(undefined);
+    const [transition, setTransition] = React.useState<React.ComponentType<SlideProps> | undefined>(undefined);
 
     React.useEffect(() => {
         if (error) {

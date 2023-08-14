@@ -8,16 +8,16 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import { CurrencyFormatProps } from "../../utils/types";
+import React from "react";
 
-const CurrencyFormat = ({ data }: CurrencyFormatProps) => {
+const CurrencyFormat: React.FC<CurrencyFormatProps> = ({ data }) => {
 
   const checkData = () => {
     if (data == null) {
       const cotacao = null;
       return cotacao;
     } else {
-      const arr = Object.values(data?.currencies);
-      const cotacao = arr.filter((item) => item != "BRL");
+      const cotacao = Object.values(data?.currencies).filter((item) => item != "BRL");
       return cotacao;
     }
   }
@@ -39,7 +39,7 @@ const CurrencyFormat = ({ data }: CurrencyFormatProps) => {
         className="mySwiper"
         draggable={false}
       >
-        {cotacao === null ? "Dados não encontrados" : cotacao?.map((item: any, index: number) =>
+        {cotacao === null ? "Dados não encontrados" : cotacao?.map((item: any, index) =>
           <SwiperSlide
             draggable={false}
             key={`${item.name}${index}`}

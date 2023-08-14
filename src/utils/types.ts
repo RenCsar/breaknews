@@ -1,4 +1,4 @@
-import { SlideProps } from '@mui/material/Slide';
+import { SlideProps } from "@mui/material/Slide";
 
 export type TForecastData = {
   date: string;
@@ -59,7 +59,7 @@ export type Currencies = {
   [currencyCode: string]: Currency;
 };
 
-type CurrencySource = {
+export type CurrencySource = {
   source: string;
   currencies: Currencies;
 };
@@ -158,6 +158,30 @@ export type AllNewsState = {
 };
 
 //--------------------------------------
+// Auth
+
+export type AuthState = {
+  token: string | null;
+  loginMessage: string | unknown | any;
+  loginLoading: boolean;
+};
+
+export type TLoginEntries = {
+  email: string;
+  password: string;
+};
+
+export type TLoginData = {
+  message: string;
+  token: string;
+};
+
+export type TAuthResponse = {
+  data: TLoginData;
+  redirectTo: string;
+};
+
+//--------------------------------------
 
 export type TCoinsProps = {
   valor: number;
@@ -209,4 +233,13 @@ export type TFooterProps = {
   display?: string;
 };
 
-export type TransitionProps = Omit<SlideProps, 'direction'>;
+export type TransitionProps = Omit<SlideProps, "direction">;
+
+export type CustomizedSnackbarsProps = {
+  error: string | null;
+};
+
+export type TClassNameLinkCustom = {
+  isActive: boolean;
+  isPending: boolean;
+};

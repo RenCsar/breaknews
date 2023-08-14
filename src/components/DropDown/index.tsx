@@ -11,6 +11,7 @@ import PaidIcon from '@mui/icons-material/Paid';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import { NavLinkCustom } from './DropDown.Styled';
 import { Tooltip } from '@mui/material';
+import { TClassNameLinkCustom } from '../../utils/types';
 
 const options = [
     'News',
@@ -45,7 +46,6 @@ const linkMenu = (name: string) => {
     return path[name] || name;
 }
 
-
 const ITEM_HEIGHT = 52;
 
 export default function DropDown() {
@@ -54,7 +54,7 @@ export default function DropDown() {
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = (): void => {
         setAnchorEl(null);
     };
 
@@ -91,7 +91,7 @@ export default function DropDown() {
                     <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
                         <NavLinkCustom
                             to={linkMenu(option)}
-                            className={({ isActive, isPending }: any) =>
+                            className={({ isActive, isPending }: TClassNameLinkCustom) =>
                                 isPending ? "pending" : isActive ? "active" : ""
                             }
                         >
