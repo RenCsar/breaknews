@@ -43,7 +43,7 @@ export const Container = styled.div`
     }
 
     & .userLogger {
-      width: 137px;
+      width: 150px;
       display: flex;
       justify-content: flex-end;
     }
