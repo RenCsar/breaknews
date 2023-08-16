@@ -140,7 +140,7 @@ export const Container = styled.div`
     & .login,
     & .signup {
       & .form {
-        width: 280px;
+        width: 250px;
       }
     }
   }
