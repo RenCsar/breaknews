@@ -117,4 +117,31 @@ export const Container = styled.div`
       cursor: pointer;
     }
   }
+
+  @media (max-width: 500px) {
+    & .login,
+    & .signup {
+      & .form {
+        width: 350px;
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    & .login,
+    & .signup {
+      & .form {
+        width: 300px;
+      }
+    }
+  }
+
+  @media (max-width: 350px) {
+    & .login,
+    & .signup {
+      & .form {
+        width: 280px;
+      }
+    }
+  }
 `;
