@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook } from 'react-icons/bs';
 import { Fade } from "react-awesome-reveal";
-import { useForm } from 'react-hook-form';
+import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../schemas/loginSchema';
 import { Store } from '../../store/store';
@@ -16,6 +16,18 @@ const SigninForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema)
     });
+
+    const sharedStyled = (error: FieldError | undefined) => ({
+        width: "100%",
+        '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+                borderColor: error ? 'secundary' : `var(--preto-fonte)`,
+            }
+        },
+        '& label.Mui-focused': {
+            color: error ? 'secundary' : `var(--preto-fonte)`,
+        }
+    })
 
     const logar = async (data: TLoginEntries) => {
         const result = await Store.dispatch(Auth(data));
@@ -47,17 +59,7 @@ const SigninForm = () => {
                         label={errors?.email?.message ? errors.email?.message : "E-mail"}
                         variant="outlined"
                         size="small"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.email)}
                     />
                     <TextField
                         id="password"
@@ -67,17 +69,7 @@ const SigninForm = () => {
                         variant="outlined"
                         size="small"
                         type="password"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.password)}
                     />
                     <input type="submit" value="Continuar" className="submit" />
                     <div className="divisao">

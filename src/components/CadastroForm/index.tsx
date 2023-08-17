@@ -2,7 +2,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import { Fade } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
-import { useForm } from 'react-hook-form';
+import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { cadastroSchema } from '../../schemas/cadastroSchemas';
 
@@ -13,8 +13,21 @@ const CadastroForm = () => {
     });
 
     const cadastrar = (data: any) => {
-        console.log(data)
+        console.log(data);
+        reset();
     }
+
+    const sharedStyled = (error: FieldError | undefined) => ({
+        width: "100%",
+        '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+                borderColor: error ? 'secundary' : `var(--preto-fonte)`,
+            }
+        },
+        '& label.Mui-focused': {
+            color: error ? 'secundary' : `var(--preto-fonte)`,
+        }
+    })
 
     return (
         <Fade direction="right" delay={100} duration={400} triggerOnce cascade>
@@ -37,17 +50,7 @@ const CadastroForm = () => {
                         size="small"
                         error={!!errors.name}
                         label={errors?.name?.message ? errors.name?.message : "Nome"}
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.name)}
                     />
                     <TextField
                         {...register("nickname")}
@@ -56,17 +59,7 @@ const CadastroForm = () => {
                         label={errors?.nickname?.message ? errors.nickname?.message : "Nickname"}
                         variant="outlined"
                         size="small"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.nickname)}
                     />
                     <TextField
                         {...register("img")}
@@ -75,17 +68,7 @@ const CadastroForm = () => {
                         label={errors?.img?.message ? errors.img?.message : "Link da foto"}
                         variant="outlined"
                         size="small"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.img)}
                     />
                     <TextField
                         {...register("background")}
@@ -94,17 +77,7 @@ const CadastroForm = () => {
                         label={errors?.background?.message ? errors.background?.message : "Link da foto para o Banner"}
                         variant="outlined"
                         size="small"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.background)}
                     />
                     <TextField
                         {...register("email")}
@@ -113,17 +86,7 @@ const CadastroForm = () => {
                         label={errors?.email?.message ? errors.email?.message : "E-mail"}
                         variant="outlined"
                         size="small"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.email)}
                     />
                     <TextField
                         {...register("password")}
@@ -133,17 +96,7 @@ const CadastroForm = () => {
                         variant="outlined"
                         size="small"
                         type="password"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.password)}
                     />
                     <TextField
                         {...register('confirmpassword')}
@@ -153,17 +106,7 @@ const CadastroForm = () => {
                         variant="outlined"
                         size="small"
                         type="password"
-                        sx={{
-                            width: "100%",
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: `var(--preto-fonte)`,
-                                }
-                            },
-                            '& label.Mui-focused': {
-                                color: `var(--preto-fonte)`,
-                            }
-                        }}
+                        sx={sharedStyled(errors.confirmpassword)}
                     />
                     <input type="submit" value="Criar Conta" className="submit" />
                     <div className="termos">
