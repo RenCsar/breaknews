@@ -182,6 +182,43 @@ export type TAuthResponse = {
 };
 
 //--------------------------------------
+//Cadastro
+
+export type TCadastrarResponse = {
+  data: TDataCadastrar;
+  redirectTo: string;
+};
+
+type TDataCadastrar = {
+  msg: string;
+  user: TCadastraUser;
+};
+
+type TCadastraUser = {
+  name: string;
+  username: string;
+  email: string;
+  img: string;
+  background: string;
+};
+
+export type TCadastrarEntries = {
+  name: string;
+  username: string;
+  img: string;
+  background: string;
+  email: string;
+  password: string;
+  confirmpassword: string;
+};
+
+export type CadastroState = {
+  data: TCadastrarResponse | null;
+  cadastroLoading: boolean;
+  cadastroMessage: string | undefined;
+};
+
+//--------------------------------------
 
 export type TCoinsProps = {
   valor: number;

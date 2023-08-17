@@ -5,17 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { cadastroSchema } from '../../schemas/cadastroSchemas';
+import { Store } from '../../store/store';
+import { Cadastrar } from '../../store/reducers/cadastroSlice';
+import { TCadastrarEntries } from '../../utils/types';
 
 const CadastroForm = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(cadastroSchema)
     });
-
-    const cadastrar = (data: any) => {
-        console.log(data);
-        reset();
-    }
 
     const sharedStyled = (error: FieldError | undefined) => ({
         width: "100%",
@@ -27,7 +25,17 @@ const CadastroForm = () => {
         '& label.Mui-focused': {
             color: error ? 'secundary' : `var(--preto-fonte)`,
         }
-    })
+    });
+
+    const cadastrar = async (data: TCadastrarEntries) => {
+        // reset();
+        const result = await Store.dispatch(Cadastrar(data));
+        reset();
+        if (Cadastrar.fulfilled.match(result)) {
+            const redirectTo = result.payload.redirectTo;
+            navigate(redirectTo);
+        }
+    };
 
     return (
         <Fade direction="right" delay={100} duration={400} triggerOnce cascade>
@@ -53,13 +61,13 @@ const CadastroForm = () => {
                         sx={sharedStyled(errors.name)}
                     />
                     <TextField
-                        {...register("nickname")}
-                        id="nickname"
-                        error={!!errors.nickname}
-                        label={errors?.nickname?.message ? errors.nickname?.message : "Nickname"}
+                        {...register("username")}
+                        id="username"
+                        error={!!errors.username}
+                        label={errors?.username?.message ? errors.username?.message : "Username"}
                         variant="outlined"
                         size="small"
-                        sx={sharedStyled(errors.nickname)}
+                        sx={sharedStyled(errors.username)}
                     />
                     <TextField
                         {...register("img")}

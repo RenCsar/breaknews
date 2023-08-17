@@ -15,8 +15,7 @@ const LoginForms = () => {
     };
 
     const { loginLoading, loginMessage } = useSelector((state: RootState) => state.auth);
-    const cadastroLoading = false;
-    const cadastroMessage = "";
+    const { cadastroLoading, cadastroMessage } = useSelector((state: RootState) => state.cadastro);  
 
     return (
         <Container>

@@ -30,14 +30,14 @@ export const cadastroSchema = yup.object({
     .string()
     .oneOf([yup.ref("password")], "As senhas devem ser iguais")
     .required("A confirmação de senha é obrigatória"),
-  nickname: yup
+  username: yup
     .string()
-    .required("O nickname é obrigatório")
-    .min(3, "O nickname deve ter no mínimo 3 letras")
-    .max(15, "O nickname deve ter no máximo 15 letras")
+    .required("O username é obrigatório")
+    .min(3, "O username deve ter no mínimo 3 letras")
+    .max(15, "O username deve ter no máximo 15 letras")
     .matches(
       /^[a-z0-9]+$/,
-      "O nickname deve conter apenas letras minúsculas e números"
+      "O username deve conter apenas letras minúsculas e números"
     )
     .trim(),
   img: yup
