@@ -190,7 +190,7 @@ export type TCadastrarResponse = {
 };
 
 type TDataCadastrar = {
-  msg: string;
+  message: string;
   user: TCadastraUser;
 };
 
@@ -274,6 +274,7 @@ export type TransitionProps = Omit<SlideProps, "direction">;
 
 export type CustomizedSnackbarsProps = {
   error: string | null;
+  tipo?: any;
 };
 
 export type TClassNameLinkCustom = {

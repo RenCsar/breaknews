@@ -15,7 +15,7 @@ const LoginForms = () => {
     };
 
     const { loginLoading, loginMessage } = useSelector((state: RootState) => state.auth);
-    const { cadastroLoading, cadastroMessage } = useSelector((state: RootState) => state.cadastro);  
+    const { cadastroLoading, cadastroMessage } = useSelector((state: RootState) => state.cadastro);
 
     return (
         <Container>
@@ -32,7 +32,7 @@ const LoginForms = () => {
                                 <p>Ainda não tem uma conta? <span onClick={toggleVisible}>Criar conta</span></p>
                             )}
                         </div>
-                        <CustomizedSnackbars error={(loginMessage || cadastroMessage)} />
+                        <CustomizedSnackbars tipo={"error"} error={(loginMessage || cadastroMessage)} />
                     </>
             }
         </Container>

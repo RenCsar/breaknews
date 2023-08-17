@@ -26,11 +26,12 @@ export const cadastroSlice = createSlice({
         builder
             .addCase(Cadastrar.pending, (state) => {
                 state.cadastroLoading = true;
-                state.cadastroMessage = '';
             })
             .addCase(Cadastrar.fulfilled, (state, action) => {
-                state.cadastroLoading = false;
+                const { message } = action.payload.data;
                 state.data = action.payload;
+                state.cadastroMessage = message;
+                state.cadastroLoading = false;
             })
             .addCase(Cadastrar.rejected, (state, action) => {
                 state.cadastroLoading = false;

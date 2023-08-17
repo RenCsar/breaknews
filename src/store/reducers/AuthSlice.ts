@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, ThunkAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, ThunkAction, createAction } from "@reduxjs/toolkit";
 import { API } from "../../API/newsApi";
 import { AuthState, TAuthResponse, TLoginEntries } from "../../utils/types";
 import { RootState } from "../store";
@@ -20,6 +20,8 @@ export const logout = (): ThunkAction<void, RootState, unknown, any> => (dispatc
     dispatch(setToken(null));
     dispatch(setMessage(''));
 };
+
+export const clearMessage = createAction('auth/clearMessage');
 
 const initialState: AuthState = {
     token: null,
@@ -56,6 +58,9 @@ export const authSlice = createSlice({
                     state.loginMessage = 'Ocorreu um erro inesperado!';
                 }
                 state.loginLoading = false;
+            })
+            .addCase(clearMessage, (state) => {
+                state.loginMessage = '';
             });
     },
 });

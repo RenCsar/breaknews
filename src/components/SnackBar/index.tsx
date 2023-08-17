@@ -4,6 +4,8 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Slide, { SlideProps } from '@mui/material/Slide';
 import { CustomizedSnackbarsProps, TransitionProps } from '../../utils/types';
+import { Store } from '../../store/store';
+import { clearMessage } from '../../store/reducers/AuthSlice';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -16,7 +18,7 @@ function TransitionRight(props: TransitionProps) {
     return <Slide {...props} direction="right" />;
 }
 
-export default function CustomizedSnackbars({ error }: CustomizedSnackbarsProps) {
+export default function CustomizedSnackbars({ error, tipo }: CustomizedSnackbarsProps) {
     const [open, setOpen] = React.useState(false);
     const [transition, setTransition] = React.useState<React.ComponentType<SlideProps> | undefined>(undefined);
 
@@ -34,7 +36,7 @@ export default function CustomizedSnackbars({ error }: CustomizedSnackbarsProps)
         if (reason === 'clickaway') {
             return;
         }
-
+        Store.dispatch(clearMessage());
         setOpen(false);
     };
 
@@ -48,7 +50,7 @@ export default function CustomizedSnackbars({ error }: CustomizedSnackbarsProps)
                     horizontal: 'center'
                 }}
                 TransitionComponent={transition}>
-                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                <Alert onClose={handleClose} severity={tipo} sx={{ width: '100%' }}>
                     {error ? error : "Ocorreu algo inesperado!"}
                 </Alert>
             </Snackbar>
