@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import { API } from "../../API/newsApi";
 import { CadastroState, TCadastrarEntries, TCadastrarResponse } from "../../utils/types";
 
@@ -12,10 +12,13 @@ export const Cadastrar = createAsyncThunk<TCadastrarResponse, TCadastrarEntries>
     }
 });
 
+export const clearMessage = createAction('auth/clearMessage');
+
 const initialState: CadastroState = {
     data: null,
     cadastroLoading: false,
     cadastroMessage: '',
+    status: '',
 };
 
 export const cadastroSlice = createSlice({
@@ -26,20 +29,27 @@ export const cadastroSlice = createSlice({
         builder
             .addCase(Cadastrar.pending, (state) => {
                 state.cadastroLoading = true;
+                state.status = 'pending';
             })
             .addCase(Cadastrar.fulfilled, (state, action) => {
                 const { message } = action.payload.data;
                 state.data = action.payload;
                 state.cadastroMessage = message;
                 state.cadastroLoading = false;
+                state.status = 'success';
             })
             .addCase(Cadastrar.rejected, (state, action) => {
                 state.cadastroLoading = false;
+                state.status = 'error';
                 if (action.payload) {
                     state.cadastroMessage = action.payload as string;
                 } else {
                     state.cadastroMessage = 'Ocorreu um erro inesperado!';
                 }
             })
+            .addCase(clearMessage, (state) => {
+                state.cadastroMessage = '';
+                state.status = '';
+            });
     }
 });

@@ -5,16 +5,19 @@ import { Store } from "../store/store";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../src/utils/theme';
 import Login from "../pages/Login";
+import GlobalSnackbar from "../components/SnackBarsGlobal";
 
 function App() {
   return (
     <BrowserRouter>
       <Provider store={Store}>
         <ThemeProvider theme={theme}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
+          <GlobalSnackbar>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </GlobalSnackbar>
         </ThemeProvider>
       </Provider>
     </BrowserRouter>

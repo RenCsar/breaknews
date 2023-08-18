@@ -5,7 +5,8 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Slide, { SlideProps } from '@mui/material/Slide';
 import { CustomizedSnackbarsProps, TransitionProps } from '../../utils/types';
 import { Store } from '../../store/store';
-import { clearMessage } from '../../store/reducers/AuthSlice';
+import { clearMessage as loginClearMessage } from '../../store/reducers/AuthSlice';
+import { clearMessage as cadastroClearMessage } from '../../store/reducers/cadastroSlice';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -36,7 +37,7 @@ export default function CustomizedSnackbars({ error, tipo }: CustomizedSnackbars
         if (reason === 'clickaway') {
             return;
         }
-        Store.dispatch(clearMessage());
+        Store.dispatch((loginClearMessage(), cadastroClearMessage()));
         setOpen(false);
     };
 
@@ -49,6 +50,7 @@ export default function CustomizedSnackbars({ error, tipo }: CustomizedSnackbars
                     vertical: 'top',
                     horizontal: 'center'
                 }}
+                autoHideDuration={5000}
                 TransitionComponent={transition}>
                 <Alert onClose={handleClose} severity={tipo} sx={{ width: '100%' }}>
                     {error ? error : "Ocorreu algo inesperado!"}

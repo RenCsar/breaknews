@@ -27,6 +27,7 @@ const initialState: AuthState = {
     token: null,
     loginLoading: false,
     loginMessage: '',
+    status: '',
 };
 
 export const authSlice = createSlice({
@@ -44,23 +45,27 @@ export const authSlice = createSlice({
         builder
             .addCase(Auth.pending, (state) => {
                 state.loginLoading = true;
+                state.status = 'pending';
             })
             .addCase(Auth.fulfilled, (state, action) => {
                 const { token, message } = action.payload.data;
                 state.token = token;
                 state.loginMessage = message;
                 state.loginLoading = false;
+                state.status = 'success';
             })
             .addCase(Auth.rejected, (state, action) => {
+                state.loginLoading = false;
+                state.status = 'error';
                 if (action.payload) {
                     state.loginMessage = action.payload as string;
                 } else {
                     state.loginMessage = 'Ocorreu um erro inesperado!';
                 }
-                state.loginLoading = false;
             })
             .addCase(clearMessage, (state) => {
                 state.loginMessage = '';
+                state.status = '';
             });
     },
 });

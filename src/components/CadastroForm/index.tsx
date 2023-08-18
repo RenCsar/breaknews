@@ -28,7 +28,6 @@ const CadastroForm = () => {
     });
 
     const cadastrar = async (data: TCadastrarEntries) => {
-        // reset();
         const result = await Store.dispatch(Cadastrar(data));
         reset();
         if (Cadastrar.fulfilled.match(result)) {

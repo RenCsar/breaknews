@@ -5,7 +5,6 @@ import CadastroForm from "../CadastroForm";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import CircularLoading from '../Loading';
-import CustomizedSnackbars from "../SnackBar";
 
 const LoginForms = () => {
     const [visible, setVisible] = useState<boolean>(false);
@@ -14,8 +13,8 @@ const LoginForms = () => {
         setVisible((prevState) => !prevState);
     };
 
-    const { loginLoading, loginMessage } = useSelector((state: RootState) => state.auth);
-    const { cadastroLoading, cadastroMessage } = useSelector((state: RootState) => state.cadastro);
+    const { loginLoading } = useSelector((state: RootState) => state.auth);
+    const { cadastroLoading } = useSelector((state: RootState) => state.cadastro);
 
     return (
         <Container>
@@ -32,7 +31,6 @@ const LoginForms = () => {
                                 <p>Ainda não tem uma conta? <span onClick={toggleVisible}>Criar conta</span></p>
                             )}
                         </div>
-                        <CustomizedSnackbars tipo={"error"} error={(loginMessage || cadastroMessage)} />
                     </>
             }
         </Container>

@@ -164,6 +164,7 @@ export type AuthState = {
   token: string | null;
   loginMessage: string | unknown | any;
   loginLoading: boolean;
+  status: string;
 };
 
 export type TLoginEntries = {
@@ -216,6 +217,7 @@ export type CadastroState = {
   data: TCadastrarResponse | null;
   cadastroLoading: boolean;
   cadastroMessage: string | undefined;
+  status: string;
 };
 
 //--------------------------------------
