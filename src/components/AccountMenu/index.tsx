@@ -10,10 +10,15 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { Store } from '../../store/store';
+import { RootState, Store } from '../../store/store';
 import { logout } from '../../store/reducers/AuthSlice';
+import { useSelector } from 'react-redux';
+import Capitalize from '../Capitalize';
 
 export default function AccountMenu() {
+  const {user} = useSelector((state: RootState) => state.auth);
+  const unsername = Capitalize(user?.name, 2)
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -32,7 +37,7 @@ export default function AccountMenu() {
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Typography sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
-          Renan Cesar
+          {unsername}
         </Typography>
         <Tooltip title="Configurações">
           <Box sx={{
@@ -49,7 +54,16 @@ export default function AccountMenu() {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
             >
-              <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+              {
+                user?
+                <Box
+                sx={{ width: 32, height: 32 }}
+                >
+                  <img src={user?.img} alt="user-avatar" style={{width: '32px', height: '32px'}}/>
+                </Box>
+                :
+                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+              }
             </IconButton>
           </Box>
         </Tooltip>

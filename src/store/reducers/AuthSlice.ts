@@ -18,6 +18,7 @@ export const logout = (): ThunkAction<void, RootState, unknown, any> => (dispatc
     localStorage.removeItem('token');
     delete API.defaults.headers.common['Authorization'];
     dispatch(setToken(null));
+    dispatch(setUser(null));
     dispatch(setMessage(''));
 };
 
@@ -28,6 +29,7 @@ const initialState: AuthState = {
     loginLoading: false,
     loginMessage: '',
     status: '',
+    user: null,
 };
 
 export const authSlice = createSlice({
@@ -39,6 +41,9 @@ export const authSlice = createSlice({
         },
         setMessage: (state, action) => {
             state.loginMessage = action.payload;
+        },
+        setUser: (state, action) => {
+            state.user = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -48,10 +53,11 @@ export const authSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(Auth.fulfilled, (state, action) => {
-                const { token, message } = action.payload.data;
+                const { token, message, user } = action.payload.data;
                 state.token = token;
                 state.loginMessage = message;
                 state.loginLoading = false;
+                state.user = user;
                 state.status = 'success';
             })
             .addCase(Auth.rejected, (state, action) => {
@@ -70,4 +76,4 @@ export const authSlice = createSlice({
     },
 });
 
-export const { setToken, setMessage } = authSlice.actions;
+export const { setToken, setMessage, setUser } = authSlice.actions;

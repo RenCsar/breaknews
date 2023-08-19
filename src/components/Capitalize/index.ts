@@ -1,4 +1,4 @@
-const Capitalize = (name: string | null, num: number) => {
+const Capitalize = (name: string | null | undefined, num: number) => {
     if (!name || typeof name !== 'string') {
         return "";
     }

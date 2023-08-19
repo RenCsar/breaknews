@@ -165,6 +165,7 @@ export type AuthState = {
   loginMessage: string | unknown | any;
   loginLoading: boolean;
   status: string;
+  user: TLoginUser | null;
 };
 
 export type TLoginEntries = {
@@ -172,9 +173,19 @@ export type TLoginEntries = {
   password: string;
 };
 
+type TLoginUser = {
+id: string;
+name: string;
+username: string;
+email: string;
+img: string;
+background: string;
+}
+
 export type TLoginData = {
   message: string;
   token: string;
+  user: TLoginUser;
 };
 
 export type TAuthResponse = {
