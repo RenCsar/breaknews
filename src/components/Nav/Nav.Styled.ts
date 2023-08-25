@@ -21,7 +21,7 @@ export const Container = styled.div`
     }
 
     & nav {
-      width: 60%;
+      width: 100%;
       & ul {
         display: flex;
         justify-content: space-around;
