@@ -5,7 +5,6 @@ import DropDown from "../DropDown";
 import { Box, Typography } from "@mui/material";
 import { useMediaQuery, useTheme } from '@mui/material';
 import { TSectionNav } from "../../utils/types";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";

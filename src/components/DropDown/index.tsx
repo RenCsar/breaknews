@@ -36,12 +36,12 @@ const icon = (titulo: string) => {
 
 const linkMenu = (name: string) => {
     const path: { [key: string]: string } = {
-        'News': 'News',
-        'Opinião': 'Opiniao',
-        'Cultura': 'Cultura',
-        'Esporte': 'Esporte',
-        'Finanças': 'Financas',
-        'Clima': 'Clima',
+        'News': '/News',
+        'Opinião': '/Opiniao',
+        'Cultura': '/Cultura',
+        'Esporte': '/Esporte',
+        'Finanças': '/Financas',
+        'Clima': '/Clima',
     }
     return path[name] || name;
 }
