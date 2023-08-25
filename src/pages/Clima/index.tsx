@@ -1,5 +1,3 @@
-import Footer from "../../components/Footer";
-import Nav from "../../components/Nav";
 import { Container } from "./Clima.Styled";
 import Chuva from "../../assets/climate/chuva-forte.svg";
 import Celsius from "../../assets/climate/if-weather-21-2682830_90793.svg"
@@ -7,7 +5,6 @@ import Celsius from "../../assets/climate/if-weather-21-2682830_90793.svg"
 const Clima = () => {
     return (
         <Container>
-            <Nav />
             <div className="container-geral">
                 <div className="container">
                     <div className="title-container">
@@ -41,7 +38,6 @@ const Clima = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </Container>
     )
 }

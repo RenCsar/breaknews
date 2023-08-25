@@ -7,6 +7,7 @@ import theme from '../../src/utils/theme';
 import Login from "../pages/Login";
 import GlobalSnackbar from "../components/SnackBarsGlobal";
 import Clima from "../pages/Clima";
+import PaginaPadrao from "../components/PaginaPadrao";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/clima" element={<Clima />} />
+              <Route element={<PaginaPadrao />}>
+                <Route path="/clima" element={<Clima />} />
+              </Route>
             </Routes>
           </GlobalSnackbar>
         </ThemeProvider>
