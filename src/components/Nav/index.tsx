@@ -20,7 +20,7 @@ const Nav = () => {
         { name: "Opinião", link: "/Opiniao" },
         { name: "Cultura", link: "/Cultura" },
         { name: "Esporte", link: "/Esporte" },
-        { name: "Finanças", link: "Finanças" },
+        { name: "Finanças", link: "/Financas" },
         { name: "Clima", link: "/Clima" },
     ];
 

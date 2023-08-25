@@ -8,6 +8,11 @@ import Login from "../pages/Login";
 import GlobalSnackbar from "../components/SnackBarsGlobal";
 import Clima from "../pages/Clima";
 import PaginaPadrao from "../components/PaginaPadrao";
+import News from "../pages/News";
+import Opiniao from "../pages/Opiniao";
+import Cultura from "../pages/Cultura";
+import Esporte from "../pages/Esporte";
+import Financas from "../pages/Financas";
 
 function App() {
   return (
@@ -19,6 +24,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route element={<PaginaPadrao />}>
+                <Route path="/News" element={<News />} />
+                <Route path="/Opiniao" element={<Opiniao />} />
+                <Route path="/Cultura" element={<Cultura />} />
+                <Route path="/Esporte" element={<Esporte />} />
+                <Route path="/Financas" element={<Financas />} />
                 <Route path="/clima" element={<Clima />} />
               </Route>
             </Routes>
