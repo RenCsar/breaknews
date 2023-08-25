@@ -1,29 +1,32 @@
 import styled from "styled-components";
 
+const borderStyle = `
+1px solid rgba(0, 0, 0, 0.1);
+`;
+
+const flexColumn = `
+display: flex;
+flex-direction: column;
+`;
+
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   width: 100%;
-  justify-content: space-between;
 
   > .container-geral {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    ${flexColumn}
     align-items: center;
     width: 100%;
     padding: var(--padding-geral);
     margin: 20px 0px;
 
     > .container {
-      display: flex;
+      ${flexColumn}
       width: 700px;
-      flex-direction: column;
       gap: 20px;
 
       > .title-container {
-        display: flex;
-        flex-direction: column;
+        ${flexColumn}
         justify-content: center;
         gap: 10px;
       }
@@ -41,6 +44,8 @@ export const Container = styled.div`
         }
 
         > .min-max {
+          display: flex;
+          gap: 30px;
           > .clima-temp {
             display: flex;
             align-items: center;
@@ -49,7 +54,7 @@ export const Container = styled.div`
               align-items: baseline;
               gap: 10px;
 
-                font-size: 30px;
+              font-size: 30px;
               > p:nth-child(1) {
               }
               > p:nth-child(2) {
@@ -58,6 +63,48 @@ export const Container = styled.div`
             }
             > img {
               width: 58px;
+            }
+          }
+        }
+      }
+
+      > .data-table {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin: 20px 0px;
+
+        > .colunas + .colunas {
+          border-left: ${borderStyle};
+        }
+
+        > .colunas {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+
+          > .status-container + .status-container {
+            border-top: ${borderStyle};
+          }
+
+          > .status-container {
+            display: flex;
+            width: 100%;
+            height: 60px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+
+            > .group-container {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              > .img-container {
+                > img {
+                  height: 30px;
+                }
+              }
             }
           }
         }
