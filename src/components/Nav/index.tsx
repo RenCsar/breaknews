@@ -16,6 +16,7 @@ const Nav = () => {
     const token = useSelector((state: RootState) => state.auth.token);
 
     const sections = [
+        { name: "Home", link: "/" },
         { name: "News", link: "/News" },
         { name: "Opinião", link: "/Opiniao" },
         { name: "Cultura", link: "/Cultura" },

@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
 import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
+import PublicIcon from '@mui/icons-material/Public';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import PaidIcon from '@mui/icons-material/Paid';
@@ -14,6 +15,7 @@ import { Tooltip } from '@mui/material';
 import { TClassNameLinkCustom } from '../../utils/types';
 
 const options = [
+    'Home',
     'News',
     'Opinião',
     'Cultura',
@@ -24,6 +26,7 @@ const options = [
 
 const icon = (titulo: string) => {
     const icones: { [key: string]: JSX.Element } = {
+        'Home': <PublicIcon />,
         'News': <NewspaperOutlinedIcon />,
         'Opinião': <ChatBubbleOutlineOutlinedIcon />,
         'Cultura': <ColorLensOutlinedIcon />,
@@ -36,6 +39,7 @@ const icon = (titulo: string) => {
 
 const linkMenu = (name: string) => {
     const path: { [key: string]: string } = {
+        'Home': '/',
         'News': '/News',
         'Opinião': '/Opiniao',
         'Cultura': '/Cultura',
