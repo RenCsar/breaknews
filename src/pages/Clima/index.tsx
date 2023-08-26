@@ -8,10 +8,16 @@ import RaiosUV from "../../assets/climate/if-weather-45-2682806_90761.svg";
 import Vento from "../../assets/climate/if-weather-9-2682842_90782.svg";
 import Gota from "../../assets/climate/weather_raindrops_rain_icon_124168.png";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState, Store } from "../../store/store";
 import CircularLoading from "../../components/Loading";
+import { useEffect } from "react";
+import { fetchClima } from "../../store/reducers/climaSlice";
 
 const Clima = () => {
+
+    useEffect(() => {
+        Store.dispatch(fetchClima());
+    }, []);
 
     const clima = useSelector((state: RootState) => state.clima.data);
 
