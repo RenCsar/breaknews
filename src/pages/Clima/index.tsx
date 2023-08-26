@@ -4,7 +4,7 @@ import Celsius from "../../assets/climate/if-weather-21-2682830_90793.svg";
 import ProbIcon from "../../assets/climate/if-weather-44-2682807_90768.svg";
 import Sunrise from "../../assets/climate/if-weather-27-2682824_90788.svg";
 import Sunset from "../../assets/climate/if-weather-26-2682825_90789.svg";
-import RaiosUV from "../../assets/climate/if-weather-45-2682806_90761.svg";
+import Nublado from "../../assets/climate/cloudiness.png";
 import Vento from "../../assets/climate/if-weather-9-2682842_90782.svg";
 import Gota from "../../assets/climate/weather_raindrops_rain_icon_124168.png";
 import { useSelector } from "react-redux";
@@ -73,6 +73,34 @@ const Clima = () => {
                                     <div className="status-container">
                                         <div className="group-container">
                                             <div className="img-container">
+                                                <img src={Nublado} alt="status-icon" style={{ width: "25px", height: "20px" }} />
+                                            </div>
+                                            <div>
+                                                <p>Nebulosidade</p>
+                                            </div>
+                                        </div>
+                                        <div className="text">
+                                            <p>{`${clima?.forecast[0].cloudiness}%`}</p>
+                                        </div>
+                                    </div>
+                                    <div className="status-container">
+                                        <div className="group-container">
+                                            <div className="img-container">
+                                                <img src={ProbIcon} alt="status-icon" />
+                                            </div>
+                                            <div>
+                                                <p>Umidade</p>
+                                            </div>
+                                        </div>
+                                        <div className="text">
+                                            <p>{`${clima?.humidity}%`}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="colunas">
+                                    <div className="status-container">
+                                        <div className="group-container">
+                                            <div className="img-container">
                                                 <img src={Sunrise} alt="status-icon" />
                                             </div>
                                             <div>
@@ -96,8 +124,6 @@ const Clima = () => {
                                             <p>{clima?.sunset}</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="colunas">
                                     <div className="status-container">
                                         <div className="group-container">
                                             <div className="img-container">
@@ -109,32 +135,6 @@ const Clima = () => {
                                         </div>
                                         <div className="text">
                                             <p>{clima?.wind_speedy}</p>
-                                        </div>
-                                    </div>
-                                    <div className="status-container">
-                                        <div className="group-container">
-                                            <div className="img-container">
-                                                <img src={RaiosUV} alt="status-icon" />
-                                            </div>
-                                            <div>
-                                                <p>Raios UV</p>
-                                            </div>
-                                        </div>
-                                        <div className="text">
-                                            <p>Alto</p>
-                                        </div>
-                                    </div>
-                                    <div className="status-container">
-                                        <div className="group-container">
-                                            <div className="img-container">
-                                                <img src={ProbIcon} alt="status-icon" />
-                                            </div>
-                                            <div>
-                                                <p>Umidade</p>
-                                            </div>
-                                        </div>
-                                        <div className="text">
-                                            <p>{`${clima?.humidity}%`}</p>
                                         </div>
                                     </div>
                                 </div>
