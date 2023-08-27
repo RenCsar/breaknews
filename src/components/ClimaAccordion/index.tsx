@@ -11,19 +11,21 @@ import SouthIcon from '@mui/icons-material/South';
 import Gota from "../../assets/climate/weather_raindrops_rain_icon_124168.png";
 import Vento from "../../assets/climate/if-weather-9-2682842_90782.svg";
 import Nublado from "../../assets/climate/cloudiness.png";
+import { TClimaAccordionProps, TForecastData } from '../../utils/types';
 
-export default function ClimaAccordion({ data }: any) {
-
+export default function ClimaAccordion({ data }: TClimaAccordionProps) {
     const [hide, setHide] = useState("flex");
-    const [list, setList] = useState([]);
+    const [list, setList] = useState<TForecastData[] | null>([]);
 
     useEffect(() => {
-        let arr: any = [];
-        for (let i = 0; i < 5; i++) {
-            arr.push(data[i]);
+        if (data) {
+            let arr = [];
+            for (let i = 0; i < 5; i++) {
+                arr.push(data[i]);
+            }
+            setList(arr);
         }
-        setList(arr);
-    }, []);
+    }, [data]);
 
     const moreDays = () => {
         setHide("none");
@@ -77,7 +79,7 @@ export default function ClimaAccordion({ data }: any) {
                 }}
             >
                 {
-                    list.map((i: any) =>
+                    list?.map((i: TForecastData) =>
                         <Accordion key={i.date}>
                             <AccordionSummary
                                 expandIcon={<ExpandCircleDownIcon />}

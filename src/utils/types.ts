@@ -46,6 +46,10 @@ export type TIconWeatherProps = {
   data: TWeatherData | null;
 };
 
+export type TClimaAccordionProps = {
+  data: TForecastData[] | null;
+};
+
 //--------------------------------------
 
 export type Currency = {
@@ -174,13 +178,13 @@ export type TLoginEntries = {
 };
 
 type TLoginUser = {
-id: string;
-name: string;
-username: string;
-email: string;
-img: string;
-background: string;
-}
+  id: string;
+  name: string;
+  username: string;
+  email: string;
+  img: string;
+  background: string;
+};
 
 export type TLoginData = {
   message: string;
