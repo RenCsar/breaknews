@@ -1,5 +1,13 @@
 import { Container } from "./Clima.Styled";
-import Chuva from "../../assets/climate/chuva-forte.svg";
+
+import { useEffect } from "react";
+import { RootState, Store } from "../../store/store";
+import { fetchClima } from "../../store/reducers/climaSlice";
+import { useSelector } from "react-redux";
+
+import CircularLoading from "../../components/Loading";
+import { IconSelect } from "../../components/IconSelect";
+
 import Celsius from "../../assets/climate/if-weather-21-2682830_90793.svg";
 import ProbIcon from "../../assets/climate/if-weather-44-2682807_90768.svg";
 import Sunrise from "../../assets/climate/if-weather-27-2682824_90788.svg";
@@ -7,11 +15,6 @@ import Sunset from "../../assets/climate/if-weather-26-2682825_90789.svg";
 import Nublado from "../../assets/climate/cloudiness.png";
 import Vento from "../../assets/climate/if-weather-9-2682842_90782.svg";
 import Gota from "../../assets/climate/weather_raindrops_rain_icon_124168.png";
-import { useSelector } from "react-redux";
-import { RootState, Store } from "../../store/store";
-import CircularLoading from "../../components/Loading";
-import { useEffect } from "react";
-import { fetchClima } from "../../store/reducers/climaSlice";
 
 const Clima = () => {
 
@@ -20,6 +23,9 @@ const Clima = () => {
     }, []);
 
     const clima = useSelector((state: RootState) => state.clima.data);
+    const condition = clima ? clima.condition_slug : null;
+
+    const imgSource = IconSelect(condition);
 
     return (
         <Container>
@@ -36,7 +42,7 @@ const Clima = () => {
                             </div>
                             <div className="clima-icons-geral">
                                 <div className="clima-icons">
-                                    <img src={Chuva} alt="clima-icon" />
+                                    <img src={imgSource} alt="clima-icon" />
                                 </div>
                                 <div className="min-max">
                                     <div className="clima-temp">
