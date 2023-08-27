@@ -54,10 +54,8 @@ export const Container = styled.div`
               display: flex;
               align-items: baseline;
               gap: 10px;
-
               font-size: 30px;
-              > p:nth-child(1) {
-              }
+
               > p:nth-child(2) {
                 font-size: 40px;
               }
@@ -105,6 +103,70 @@ export const Container = styled.div`
                 > img {
                   height: 30px;
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    > .container-geral {
+      > .container {
+        width: 550px;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    > .container-geral {
+      > .container {
+        width: 100%;
+
+        > .title-container {
+          align-items: center;
+        }
+
+        > .clima-icons-geral {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        > .data-table {
+          flex-direction: column;
+
+          > .colunas + .colunas {
+            border-left: none;
+            border-top: ${borderStyle};
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    > .container-geral {
+      > .container {
+        > .title-container {
+          text-align: center;
+        }
+
+        > .clima-icons-geral {
+          > .min-max {
+            gap: 20px;
+            width: 100%;
+            justify-content: center;
+            > .clima-temp {
+              align-items: center;
+              > .text-container {
+                font-size: 20px;
+                > p:nth-child(2) {
+                  font-size: 28px;
+                }
+              }
+              > img {
+                width: 45px;
               }
             }
           }

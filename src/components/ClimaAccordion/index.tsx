@@ -3,7 +3,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Hidden, useTheme, useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { IconSelect } from '../IconSelect';
 import NorthIcon from '@mui/icons-material/North';
@@ -31,6 +31,10 @@ export default function ClimaAccordion({ data }: TClimaAccordionProps) {
         setHide("none");
         setList(data);
     }
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
     const sharedStyles = {
         beforeStyles: (color: string) => {
@@ -89,13 +93,13 @@ export default function ClimaAccordion({ data }: TClimaAccordionProps) {
                                 <Box
                                     sx={{
                                         ...sharedStyles.flexCenter,
-                                        gap: "15px",
+                                        gap: xsDown ? "7px" : "15px",
                                     }}
                                 >
                                     <Box
                                         sx={{
-                                            width: "50px",
-                                            height: "50px",
+                                            width: xsDown ? "40px" : "50px",
+                                            height: xsDown ? "40px" : "50px",
                                             borderRadius: "50%",
                                             background: "#ececec",
                                             flexDirection: "column",
@@ -103,24 +107,38 @@ export default function ClimaAccordion({ data }: TClimaAccordionProps) {
                                             ...sharedStyles.flexCenter
                                         }}
                                     >
-                                        <Typography fontSize={13} >{i.date.split("/")[0]}</Typography>
-                                        <Typography fontSize={13} >{i.weekday}</Typography>
+                                        <Typography fontSize={xsDown ? 12 : 13} >{i.date.split("/")[0]}</Typography>
+                                        <Typography fontSize={xsDown ? 12 : 13} >{i.weekday}</Typography>
                                     </Box>
-                                    <img src={IconSelect(i.condition)} alt="icon-weather" />
-                                    <Box>
-                                        <Box
-                                            sx={sharedStyles.flexCenter}
-                                        >
-                                            <SouthIcon sx={{ height: "17px", color: "#1bf" }} />
-                                            <Typography>{i.min}º</Typography>
-                                        </Box>
-                                        <Box sx={sharedStyles.flexCenter}
-                                        >
-                                            <NorthIcon sx={{ height: "17px", color: "red" }} />
-                                            <Typography>{i.max}º</Typography>
-                                        </Box>
+                                    <Box
+                                        sx={{
+                                            "& img": {
+                                                width: xsDown ? "40px" : "50px",
+                                            }
+                                        }}
+                                    >
+                                        <img src={IconSelect(i.condition)} alt="icon-weather" />
                                     </Box>
-                                    <Typography>{i.description}</Typography>
+                                    <Hidden smDown>
+                                        <Box>
+                                            <Box
+                                                sx={sharedStyles.flexCenter}
+                                            >
+                                                <SouthIcon sx={{ height: "17px", color: "#1bf" }} />
+                                                <Typography>{i.min}º</Typography>
+                                            </Box>
+                                            <Box sx={sharedStyles.flexCenter}
+                                            >
+                                                <NorthIcon sx={{ height: "17px", color: "red" }} />
+                                                <Typography>{i.max}º</Typography>
+                                            </Box>
+                                        </Box>
+                                    </Hidden>
+                                    <Typography
+                                        sx={{
+                                            fontSize: matches ? "14px" : "16px",
+                                        }}
+                                    >{i.description}</Typography>
                                 </Box>
                             </AccordionSummary>
                             <AccordionDetails>
