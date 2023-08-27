@@ -5,8 +5,9 @@ import { RootState, Store } from "../../store/store";
 import { fetchClima } from "../../store/reducers/climaSlice";
 import { useSelector } from "react-redux";
 
-import CircularLoading from "../../components/Loading";
 import { IconSelect } from "../../components/IconSelect";
+import CircularLoading from "../../components/Loading";
+import ClimaAccordion from "../../components/ClimaAccordion";
 
 import Celsius from "../../assets/climate/if-weather-21-2682830_90793.svg";
 import ProbIcon from "../../assets/climate/if-weather-44-2682807_90768.svg";
@@ -24,7 +25,7 @@ const Clima = () => {
 
     const clima = useSelector((state: RootState) => state.clima.data);
     const condition = clima ? clima.condition_slug : null;
-
+    const forecast = clima ? clima.forecast : null;
     const imgSource = IconSelect(condition);
 
     return (
@@ -144,6 +145,9 @@ const Clima = () => {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div className="forecast-container">
+                                <ClimaAccordion data={forecast} />
                             </div>
                         </div>
                 }
