@@ -41,7 +41,7 @@ const Culture = () => {
           </Box>
         )}
       </div>
-      <MoreNews />
+      <MoreNews caminho={"/Cultura"} />
     </Container>
   )
 }

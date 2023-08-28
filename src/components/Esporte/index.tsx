@@ -27,7 +27,7 @@ const Esporte = () => {
           <OtherNews post={Post} />
         </div>
       </div>
-      <MoreNews />
+      <MoreNews caminho="/Esporte" />
     </Container>
   )
 }

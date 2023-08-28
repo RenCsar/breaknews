@@ -36,7 +36,7 @@ const Opinion = () => {
           </Box>
         )}
       </div>
-      <MoreNews />
+      <MoreNews caminho={"/Opiniao"} />
     </Container>
   )
 }

@@ -1,12 +1,19 @@
+import { Link } from 'react-router-dom';
 import { Container } from './MoreNews.Styled';
 
-const MoreNews = () => {
+type TMoreNewsProps = {
+    caminho: string,
+}
+
+const MoreNews = ({ caminho }: TMoreNewsProps) => {
     return (
         <Container>
             <div className="mais-noticiais">
-                <p>
-                    Mais notíciais
-                </p>
+                <Link to={caminho}>
+                    <p>
+                        Mais notíciais
+                    </p>
+                </Link>
             </div>
         </Container>
     )

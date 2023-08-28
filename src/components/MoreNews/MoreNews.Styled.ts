@@ -8,11 +8,15 @@ export const Container = styled.div`
     margin-bottom: 10px;
     cursor: pointer;
 
-    & p {
-      border: 1px solid var(--border-color);
-      font-weight: bold;
-      border-radius: 50px;
-      padding: 1px 10px;
+    & a {
+      color: var(--preto-fonte);
+
+      & p {
+        border: 1px solid var(--border-color);
+        font-weight: bold;
+        border-radius: 50px;
+        padding: 1px 10px;
+      }
     }
   }
 `;
