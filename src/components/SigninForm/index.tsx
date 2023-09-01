@@ -47,7 +47,7 @@ const SigninForm = () => {
                 <Box
                     component="form"
                     sx={{
-                        '& > :not(style)': { m: 1 },
+                        '& > :not(style)': { m: "8px 0px" },
                     }}
                     className="form"
                     onSubmit={handleSubmit(logar)}
