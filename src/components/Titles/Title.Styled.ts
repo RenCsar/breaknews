@@ -13,7 +13,13 @@ export const Container = styled.div`
 
   @media (max-width: 350px) {
     & .headline-container {
-      font-size: 16px;
+      font-size: 16px !important;
+    }
+  }
+
+  @media (max-width: 270px) {
+    & .headline-container {
+      font-size: 14px !important;
     }
   }
 `;
