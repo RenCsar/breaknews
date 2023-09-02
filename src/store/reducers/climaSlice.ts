@@ -5,8 +5,25 @@ import { ClimaState, TWeatherData } from "../../utils/types";
 const key = process.env.REACT_APP_WEATHER_KEY;
 
 export const fetchClima = createAsyncThunk<TWeatherData, void>('clima/fetchClima', async () => {
-    const response = await API.get(`/weather?user_ip=remote&format=json-cors&key=${key}`);
-    return response.data.results;
+    if ("geolocation" in navigator) {
+        try {
+            const position = await new Promise<any>((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            });
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            const response = await API.get(`/weather?lat=${latitude}&lon=${longitude}&format=json-cors&key=${key}`);
+            return response.data.results;
+        } catch (error) {
+            console.error('Erro ao obter a posição do usuário: ', error);
+        }
+    } else {
+        const response = await API.get(`/weather?user_ip=remote&format=json-cors&key=${key}`);
+        return response.data.results;
+    }
+
 });
 
 const initialState: ClimaState = {
