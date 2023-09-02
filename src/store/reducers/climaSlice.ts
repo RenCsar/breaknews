@@ -18,11 +18,12 @@ export const fetchClima = createAsyncThunk<TWeatherData, void>('clima/fetchClima
             return response.data.results;
         } catch (error) {
             console.error('Erro ao obter a posição do usuário: ', error);
+            const response = await API.get(`/weather?woeid=455827`);
+            return response.data.results;
         }
     } else {
         // const response = await API.get(`/weather?user_ip=remote&format=json-cors&key=${key}`);
         const response = await API.get(`/weather?woeid=455827`);
-        return response.data.results;
     }
 });
 
