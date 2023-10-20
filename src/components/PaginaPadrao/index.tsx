@@ -6,9 +6,15 @@ import { Container } from "./PaginaPadrao.Styled";
 const PaginaPadrao = () => {
     return (
         <Container>
-            <Nav />
-            <Outlet />
-            <Footer />
+            <header>
+                <Nav />
+            </header>
+            <main>
+                <Outlet />
+            </main>
+            <footer>
+                <Footer />
+            </footer>
         </Container>
     )
 }

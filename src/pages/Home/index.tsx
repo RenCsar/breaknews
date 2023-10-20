@@ -14,9 +14,9 @@ const Home = () => {
     <Container>
       <HeaderStatus />
       <Banner />
-      <div className="nav-container">
+      <header className="nav-container">
         <Nav />
-      </div>
+      </header>
       <Headline />
       <Opinion />
       <Culture />
