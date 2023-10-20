@@ -3,7 +3,7 @@ import { API } from "../../API/newsApi";
 import { AllNewsData, AllNewsState } from "../../utils/types";
 
 export const fetchSectionNews = createAsyncThunk<AllNewsData, { limit: number, offset: number, section: string }>("SectionNews", async ({ limit, offset, section }) => {
-    const response = await API.get(`/news/posts?section=${section}?limit=${limit}&offset=${offset}`);
+    const response = await API.get(`/news/posts?section=${section}&limit=${limit}&offset=${offset}`);
     return response.data.results;
 });
 
