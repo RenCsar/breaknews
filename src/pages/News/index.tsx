@@ -3,6 +3,7 @@ import { Container } from "./News.styled";
 import { RootState, Store } from "../../store/store";
 import { useSelector } from "react-redux";
 import { fetchAllNews } from "../../store/reducers/allNewsSlice";
+import CardList from "../../components/CardList";
 
 const News = () => {
   useEffect(() => {
@@ -13,11 +14,7 @@ const News = () => {
 
   return (
     <Container>
-      {
-        Post?.map((i: any) =>
-          <p key={i.id}>{i.category[0]}</p>
-        )
-      }
+      <CardList post={Post} imgheight="260px" imgwidth="350px" height="260px" />
     </Container>
   )
 }

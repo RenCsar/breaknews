@@ -6,4 +6,11 @@ export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   justify-content: space-between;
+
+  & .nav-container {
+    position: sticky;
+    top: 0px;
+    z-index: 99;
+    background-color: var(--branco);
+  }
 `;

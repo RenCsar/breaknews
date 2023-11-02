@@ -298,3 +298,9 @@ export type TClassNameLinkCustom = {
   isActive: boolean;
   isPending: boolean;
 };
+
+export type TCardListProps = TAllPostProps & {
+  imgheight?: string;
+  imgwidth?: string;
+  height?: string;
+}

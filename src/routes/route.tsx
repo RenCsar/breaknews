@@ -13,10 +13,12 @@ import Opiniao from "../pages/Opiniao";
 import Cultura from "../pages/Cultura";
 import Esporte from "../pages/Esporte";
 import Financas from "../pages/Financas";
+import ScrollToTop from "../components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Provider store={Store}>
         <ThemeProvider theme={theme}>
           <GlobalSnackbar>

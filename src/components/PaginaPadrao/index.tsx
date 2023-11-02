@@ -6,7 +6,7 @@ import { Container } from "./PaginaPadrao.Styled";
 const PaginaPadrao = () => {
     return (
         <Container>
-            <header>
+            <header className="nav-container">
                 <Nav />
             </header>
             <main>

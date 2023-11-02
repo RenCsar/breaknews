@@ -3,6 +3,7 @@ import { Container } from './Esporte.styled';
 import { RootState, Store } from '../../store/store';
 import { fetchSectionNews } from '../../store/reducers/getSectionNews';
 import { useSelector } from 'react-redux';
+import CardList from "../../components/CardList";
 
 const Esporte = () => {
   useEffect(() => {
@@ -13,11 +14,7 @@ const Esporte = () => {
 
   return (
     <Container>
-      {
-        Post?.map((i: any) =>
-          <p key={i.id}>{i.category[0]}</p>
-        )
-      }
+      <CardList post={Post} imgheight="260px" imgwidth="350px" height="260px" />
     </Container>
   )
 }
