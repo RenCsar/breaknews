@@ -304,3 +304,7 @@ export type TCardListProps = TAllPostProps & {
   imgwidth?: string;
   height?: string;
 }
+
+export type TCategoryBannerProps = {
+  category: string
+}
