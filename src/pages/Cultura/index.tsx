@@ -1,16 +1,9 @@
-import { useEffect } from "react";
 import { Container } from "./Cultura.styled";
-import { RootState, Store } from "../../store/store";
-import { fetchSectionNews } from "../../store/reducers/getSectionNews";
-import { useSelector } from "react-redux";
 import CardList from "../../components/CardList";
+import useSectionData from "../../hooks/useSectionData";
 
 const Cultura = () => {
-    useEffect(() => {
-        Store.dispatch(fetchSectionNews({ section: "cultura", limit: 100, offset: 0 }));
-    }, []);
-
-    const Post = useSelector((state: RootState) => state.section.data);
+    const Post = useSectionData("cultura", 100, 0);
 
     return (
         <Container>

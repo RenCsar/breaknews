@@ -1,16 +1,9 @@
-import { useEffect } from 'react';
 import { Container } from './Esporte.styled';
-import { RootState, Store } from '../../store/store';
-import { fetchSectionNews } from '../../store/reducers/getSectionNews';
-import { useSelector } from 'react-redux';
 import CardList from "../../components/CardList";
+import useSectionData from '../../hooks/useSectionData';
 
 const Esporte = () => {
-  useEffect(() => {
-    Store.dispatch(fetchSectionNews({ section: "esporte", limit: 100, offset: 0 }));
-  }, []);
-
-  const Post = useSelector((state: RootState) => state.section.data);
+  const Post = useSectionData("esporte", 100, 0);
 
   return (
     <Container>

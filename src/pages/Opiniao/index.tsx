@@ -1,16 +1,9 @@
-import { useEffect } from "react";
 import { Container } from "./Opiniao.styled";
-import { RootState, Store } from "../../store/store";
-import { useSelector } from "react-redux";
-import { fetchSectionNews } from "../../store/reducers/getSectionNews";
 import CardList from "../../components/CardList";
+import useSectionData from "../../hooks/useSectionData";
 
 const Opiniao = () => {
-    useEffect(() => {
-        Store.dispatch(fetchSectionNews({ section: "opinião", limit: 100, offset: 0 }));
-    }, []);
-
-    const Post = useSelector((state: RootState) => state.section.data);
+    const Post = useSectionData("opinião", 100, 0);
 
     return (
         <Container>
