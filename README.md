@@ -4,6 +4,10 @@ Slogans: "De Leitor a Repórter: Transformando Cada Pessoa em uma Fonte de Notí
 
 -->
 <a name="readme-top"></a>
+
+:construction:
+Construindo...
+
 <br />
 <div align="center">
   <a href="https://breaknews.vercel.app/">
@@ -29,9 +33,8 @@ Slogans: "De Leitor a Repórter: Transformando Cada Pessoa em uma Fonte de Notí
 
 <h1 align="center">  
   <p align="center">
-  <img width="800" height="400" src="public/site.gif"><br><br>
-  <img width="200" height="400" src="public/mobile.gif"><br><br>
-  <img width="800" height="400" src="public/toast-erro.gif">
+  <img width="200" height="400" src="./src/assets/mobile.png"><br><br>
+  <img width="800" height="400" src="./src/assets/devices.png">
 </p>
 
 </h1>
